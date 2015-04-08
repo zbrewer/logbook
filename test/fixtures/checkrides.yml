@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  checkride_date: 2015-04-08
+  examiner_name: MyString
+  cfi: false
+  cfii: false
+  instrument: false
+  certificate: false
+  certificate_type: MyString
+  single_engine_land: false
+  single_engine_sea: false
+  multi_engine_land: false
+  multi_engine_sea: false
+  rotorcraft: false
+  glider: false
+  powered_lift: false
+  lighter_than_air: false
+
+two:
+  checkride_date: 2015-04-08
+  examiner_name: MyString
+  cfi: false
+  cfii: false
+  instrument: false
+  certificate: false
+  certificate_type: MyString
+  single_engine_land: false
+  single_engine_sea: false
+  multi_engine_land: false
+  multi_engine_sea: false
+  rotorcraft: false
+  glider: false
+  powered_lift: false
+  lighter_than_air: false
