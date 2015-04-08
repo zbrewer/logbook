@@ -1,0 +1,62 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @validatable %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birth_date %><br />
+    <%= f.date_select :birth_date, order: [ :month, :day, :year ], start_year: 1915, end_year: Date.today.year, date_separator: '/ ' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :certificate_number %><br />
+    <%= f.number_field :certificate_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :certificate_type %><br />
+    <%= f.select :certificate_type, [ ['Student Pilot', 'STU'], ['Sport Pilot', 'SPT'], ['Recreational Pilot', 'RPL'], ['Private Pilot', 'PPL'],
+                                      ['Commercial Pilot', 'CPL'], ['Airline Transport Pilot', 'ATP'] ] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :certificate_issue_date, "Certificate Date of Issue" %><br />
+    <%= f.date_select :certificate_issue_date, order: [ :month, :day, :year ], include_blank: true, start_year: 1915, end_year: Date.today.year, date_separator: '/ ' %>
+  </div>
+
+  <br />
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
