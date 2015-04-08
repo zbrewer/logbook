@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  review_date: 2015-04-08
+  name_of_reviewer: MyString
+  flight_review: false
+  instrument_proficiency_check: false
+  cfi_renewal: false
+
+two:
+  review_date: 2015-04-08
+  name_of_reviewer: MyString
+  flight_review: false
+  instrument_proficiency_check: false
+  cfi_renewal: false

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408060959) do
+ActiveRecord::Schema.define(version: 20150408061754) do
 
   create_table "airplanes", force: :cascade do |t|
     t.string   "identification"
@@ -64,6 +64,16 @@ ActiveRecord::Schema.define(version: 20150408060959) do
     t.string   "examiner_name"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.date     "review_date"
+    t.string   "name_of_reviewer"
+    t.boolean  "flight_review",                default: false
+    t.boolean  "instrument_proficiency_check", default: false
+    t.boolean  "cfi_renewal",                  default: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
   end
 
   create_table "users", force: :cascade do |t|
