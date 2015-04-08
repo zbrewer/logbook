@@ -26,6 +26,39 @@
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
+  
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birth_date %><br />
+    <%= f.date_select :birth_date, order: [ :month, :day, :year ], start_year: 1915, end_year: Date.today.year, date_separator: '/ ' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :certificate_number %><br />
+    <%= f.number_field :certificate_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :certificate_type %><br />
+    <%= f.select :certificate_type, [ ['Student Pilot', 'STU'], ['Sport Pilot', 'SPT'], ['Recreational Pilot', 'RPL'], ['Private Pilot', 'PPL'],
+                                      ['Commercial Pilot', 'CPL'], ['Airline Transport Pilot', 'ATP'] ] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :certificate_issue_date, "Certificate Date of Issue" %><br />
+    <%= f.date_select :certificate_issue_date, order: [ :month, :day, :year ], include_blank: true, start_year: 1915, end_year: Date.today.year, date_separator: '/ ' %>
+  </div>
+  
+  <br />
 
   <div class="actions">
     <%= f.submit "Update" %>
