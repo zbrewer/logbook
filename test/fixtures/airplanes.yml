@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  identification: MyString
+  type: 
+  complex: false
+  high_performance: false
+  tailwheel: false
+  high_altitude: false
+  turbine: false
+  glider: false
+  rotorcraft: false
+  powered_lift: false
+  lighter_than_air: false
+  single_engine_land: false
+  single_engine_sea: false
+  multi_engine_land: false
+  multi_engine_sea: false
+  simulator: false
+  display_name: MyString
+
+two:
+  identification: MyString
+  type: 
+  complex: false
+  high_performance: false
+  tailwheel: false
+  high_altitude: false
+  turbine: false
+  glider: false
+  rotorcraft: false
+  powered_lift: false
+  lighter_than_air: false
+  single_engine_land: false
+  single_engine_sea: false
+  multi_engine_land: false
+  multi_engine_sea: false
+  simulator: false
+  display_name: MyString

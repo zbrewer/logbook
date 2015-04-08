@@ -11,7 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408022616) do
+ActiveRecord::Schema.define(version: 20150408055625) do
+
+  create_table "airplanes", force: :cascade do |t|
+    t.string   "identification"
+    t.string   "type"
+    t.boolean  "complex",            default: false
+    t.boolean  "high_performance",   default: false
+    t.boolean  "tailwheel",          default: false
+    t.boolean  "high_altitude",      default: false
+    t.boolean  "turbine",            default: false
+    t.boolean  "glider",             default: false
+    t.boolean  "rotorcraft",         default: false
+    t.boolean  "powered_lift",       default: false
+    t.boolean  "lighter_than_air",   default: false
+    t.boolean  "single_engine_land", default: false
+    t.boolean  "single_engine_sea",  default: false
+    t.boolean  "multi_engine_land",  default: false
+    t.boolean  "multi_engine_sea",   default: false
+    t.boolean  "simulator",          default: false
+    t.string   "display_name"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  create_table "medicals", force: :cascade do |t|
+    t.date     "exam_date"
+    t.decimal  "class"
+    t.string   "examiner_name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
