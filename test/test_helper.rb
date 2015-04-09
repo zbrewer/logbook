@@ -8,3 +8,9 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+# Include so that the devise (user auth) portion of the controllers
+# can be tested
+class ActionController::TestCase
+  include Devise::TestHelpers
+end
