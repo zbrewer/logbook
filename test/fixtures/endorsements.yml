@@ -1,21 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  endorsement_date: 2015-04-08
-  cfi_name: MyString
-  cfi_certificate_number: 1
-  cfi_expiration_date: 2015-04-08
-  complex: false
+test_complex_endorsement:
+  endorsement_date: 2014-12-01
+  cfi_name: "Stephen Colbert"
+  cfi_certificate_number: 100
+  cfi_expiration_date: 2016-12-01
+  complex: true
   high_performance: false
   tailwheel: false
   high_altitude: false
 
-two:
+endorsement_defaults:
   endorsement_date: 2015-04-08
-  cfi_name: MyString
-  cfi_certificate_number: 1
+  cfi_name: "Steve Carell"
+  cfi_certificate_number: 101
   cfi_expiration_date: 2015-04-08
-  complex: false
-  high_performance: false
-  tailwheel: false
-  high_altitude: false
