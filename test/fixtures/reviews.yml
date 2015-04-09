@@ -1,15 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+test_flight_review:
   review_date: 2015-04-08
-  name_of_reviewer: MyString
-  flight_review: false
+  name_of_reviewer: "Harry Potter"
+  flight_review: true
   instrument_proficiency_check: false
   cfi_renewal: false
 
-two:
+review_defaults:
   review_date: 2015-04-08
-  name_of_reviewer: MyString
-  flight_review: false
-  instrument_proficiency_check: false
-  cfi_renewal: false
+  name_of_reviewer: "Hagrid"
