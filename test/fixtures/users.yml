@@ -4,10 +4,22 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
+john_doe:
   email: "test@example.com"
   encrypted_password: "test hash"
+  first_name: "John"
+  last_name: "Doe"
+  birth_date: 1990-08-12
+  certificate_number: 12345
+  certificate_type: "PPL"
+  certificate_issue_date: 2014-08-12
 
-two:
+jane_doe:
   email: "test_two@example.com"
   encrypted_password: "another test hash"
+  first_name: "Jane"
+  last_name: "Doe"
+  birth_date: 1992-10-03
+  certificate_number: 54321
+  certificate_type: "STU"
+  certificate_issue_date: 2015-03-07
