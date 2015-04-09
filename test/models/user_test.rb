@@ -19,6 +19,9 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 1, user.medicals[0].medical_class
     assert_not user.airplanes.empty?
     assert_equal "N5493Z", user.airplanes[0].identification
+    assert_not user.endorsements.empty?
+    assert user.endorsements[0].complex
+    assert_equal 100, user.endorsements[0].cfi_certificate_number
   end
 
   test "jane doe" do
@@ -35,6 +38,9 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 3, user.medicals[0].medical_class
     assert_not user.airplanes.empty?
     assert_equal "N157ME", user.airplanes[0].identification
+    assert_not user.endorsements.empty?
+    assert_not user.endorsements[0].complex
+    assert_equal 101, user.endorsements[0].cfi_certificate_number
   end
 
 end

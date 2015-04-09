@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409095304) do
+ActiveRecord::Schema.define(version: 20150409100149) do
 
   create_table "airplanes", force: :cascade do |t|
     t.string   "identification"
@@ -69,7 +69,10 @@ ActiveRecord::Schema.define(version: 20150409095304) do
     t.boolean  "high_altitude",          default: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.integer  "user_id"
   end
+
+  add_index "endorsements", ["user_id"], name: "index_endorsements_on_user_id"
 
   create_table "flights", force: :cascade do |t|
     t.date     "flight_date"

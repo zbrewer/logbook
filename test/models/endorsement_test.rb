@@ -15,6 +15,8 @@ class EndorsementTest < ActiveSupport::TestCase
     assert_not endorsement.high_performance
     assert_not endorsement.tailwheel
     assert_not endorsement.high_altitude
+    assert_not endorsement.user.nil?
+    assert_equal 12345, endorsement.user.certificate_number
   end
 
   test "endorsement defaults" do
@@ -27,6 +29,8 @@ class EndorsementTest < ActiveSupport::TestCase
     assert_not endorsement.high_performance
     assert_not endorsement.tailwheel
     assert_not endorsement.high_altitude
+    assert_not endorsement.user.nil?
+    assert_equal 54321, endorsement.user.certificate_number
   end
 
 end

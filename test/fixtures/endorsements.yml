@@ -9,9 +9,11 @@ test_complex_endorsement:
   high_performance: false
   tailwheel: false
   high_altitude: false
+  user: john_doe
 
 endorsement_defaults:
   endorsement_date: 2015-04-08
   cfi_name: "Steve Carell"
   cfi_certificate_number: 101
   cfi_expiration_date: 2015-04-08
+  user: jane_doe
