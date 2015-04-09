@@ -1,14 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  checkride_date: 2015-04-08
-  examiner_name: MyString
+ppl_checkride:
+  checkride_date: 2014-05-08
+  examiner_name: "John Oliver"
   cfi: false
   cfii: false
   instrument: false
-  certificate: false
-  certificate_type: MyString
-  single_engine_land: false
+  certificate: true
+  certificate_type: "PPL"
+  single_engine_land: true
   single_engine_sea: false
   multi_engine_land: false
   multi_engine_sea: false
@@ -17,19 +17,7 @@ one:
   powered_lift: false
   lighter_than_air: false
 
-two:
+instrument_with_defaults:
   checkride_date: 2015-04-08
-  examiner_name: MyString
-  cfi: false
-  cfii: false
-  instrument: false
-  certificate: false
-  certificate_type: MyString
-  single_engine_land: false
-  single_engine_sea: false
-  multi_engine_land: false
-  multi_engine_sea: false
-  rotorcraft: false
-  glider: false
-  powered_lift: false
-  lighter_than_air: false
+  examiner_name: "John Stewart"
+  instrument: true
