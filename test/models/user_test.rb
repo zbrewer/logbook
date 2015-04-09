@@ -15,6 +15,8 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 12345, user.certificate_number
     assert_equal "PPL", user.certificate_type
     assert_equal Date.new(2014, 8, 12), user.certificate_issue_date
+    assert_not user.medicals.empty?
+    assert_equal 1, user.medicals[0].medical_class
   end
 
   test "jane doe" do
@@ -27,6 +29,8 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 54321, user.certificate_number
     assert_equal "STU", user.certificate_type
     assert_equal Date.new(2015, 3, 7), user.certificate_issue_date
+    assert_not user.medicals.empty?
+    assert_equal 3, user.medicals[0].medical_class
   end
 
 end

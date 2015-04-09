@@ -10,6 +10,9 @@ class MedicalTest < ActiveSupport::TestCase
     assert_equal Date.new(2012, 7, 15), medical.exam_date
     assert_equal 1, medical.medical_class
     assert_equal "George Washington", medical.examiner_name
+    assert_not medical.user.nil?
+    assert_equal 12345, medical.user.certificate_number
+    assert_equal "John", medical.user.first_name
   end
 
   test "third class medical" do
@@ -17,6 +20,9 @@ class MedicalTest < ActiveSupport::TestCase
     assert_equal Date.new(2013, 2, 21), medical.exam_date
     assert_equal 3, medical.medical_class
     assert_equal "Thomas Jefferson", medical.examiner_name
+    assert_not medical.user.nil?
+    assert_equal 54321, medical.user.certificate_number
+    assert_equal "Jane", medical.user.first_name
   end
 
 end
