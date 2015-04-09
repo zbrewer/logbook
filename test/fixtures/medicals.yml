@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  exam_date: 2015-04-08
-  class: 9.99
-  examiner_name: MyString
+first_class:
+  exam_date: 2012-07-15
+  class: 1
+  examiner_name: "George Washington"
 
-two:
-  exam_date: 2015-04-08
-  class: 9.99
-  examiner_name: MyString
+third_class:
+  exam_date: 2013-02-21
+  class: 3
+  examiner_name: "Thomas Jefferson"
