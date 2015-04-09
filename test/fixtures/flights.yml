@@ -1,41 +1,41 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  flight_date: 2015-04-08
-  total_time: 9.99
-  pic_time: 9.99
-  sic_time: 9.99
-  dual_received: 9.99
-  dual_given: 9.99
-  day_landings: 1
-  night_landings: 1
-  actual_instrument: 9.99
-  simulated_instrument: 9.99
-  number_approaches: 1
+instrument_training:
+  flight_date: 2014-06-10
+  total_time: 1.3
+  pic_time: 1.3
+  sic_time: 0
+  dual_received: 1.3
+  dual_given: 0
+  day_landings: 0
+  night_landings: 3
+  actual_instrument: 0.4
+  simulated_instrument: 0.6
+  number_approaches: 3
   number_holds: 1
-  remarks: MyText
-  departure_airport: MyString
-  destination_airports: MyString
-  night_time: 9.99
-  cross_country_time: 9.99
-  solo_time: 9.99
+  remarks: "Local IFR training flight"
+  departure_airport: "KCMI"
+  destination_airports: "KCMI"
+  night_time: 1.3
+  cross_country_time: 0
+  solo_time: 0
 
-two:
-  flight_date: 2015-04-08
-  total_time: 9.99
-  pic_time: 9.99
-  sic_time: 9.99
-  dual_received: 9.99
-  dual_given: 9.99
-  day_landings: 1
-  night_landings: 1
-  actual_instrument: 9.99
-  simulated_instrument: 9.99
-  number_approaches: 1
-  number_holds: 1
-  remarks: MyText
-  departure_airport: MyString
-  destination_airports: MyString
-  night_time: 9.99
-  cross_country_time: 9.99
-  solo_time: 9.99
+cross_country:
+  flight_date: 2015-02-04
+  total_time: 3.4
+  pic_time: 3.4
+  sic_time: 0
+  dual_received: 0
+  dual_given: 0
+  day_landings: 2
+  night_landings: 0
+  actual_instrument: 0.1
+  simulated_instrument: 0
+  number_approaches: 0
+  number_holds: 0
+  remarks: "Solo XC"
+  departure_airport: "KCMI"
+  destination_airports: "KSDF KCMI"
+  night_time: 0
+  cross_country_time: 3.4
+  solo_time: 3.4
