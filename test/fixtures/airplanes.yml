@@ -18,8 +18,10 @@ test_arrow:
   multi_engine_sea: false
   simulator: false
   display_name: "Test Arrow"
+  user: john_doe
 
 test_defaults:
   identification: "N157ME"
   airplane_type: "C172SP"
   display_name: "Test Defaults Airplane"
+  user: jane_doe

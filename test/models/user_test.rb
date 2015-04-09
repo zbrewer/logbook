@@ -17,6 +17,8 @@ class UserTest < ActiveSupport::TestCase
     assert_equal Date.new(2014, 8, 12), user.certificate_issue_date
     assert_not user.medicals.empty?
     assert_equal 1, user.medicals[0].medical_class
+    assert_not user.airplanes.empty?
+    assert_equal "N5493Z", user.airplanes[0].identification
   end
 
   test "jane doe" do
@@ -31,6 +33,8 @@ class UserTest < ActiveSupport::TestCase
     assert_equal Date.new(2015, 3, 7), user.certificate_issue_date
     assert_not user.medicals.empty?
     assert_equal 3, user.medicals[0].medical_class
+    assert_not user.airplanes.empty?
+    assert_equal "N157ME", user.airplanes[0].identification
   end
 
 end

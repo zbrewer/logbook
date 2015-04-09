@@ -24,6 +24,8 @@ class AirplaneTest < ActiveSupport::TestCase
     assert_not airplane.multi_engine_sea
     assert_not airplane.simulator
     assert_equal "Test Arrow", airplane.display_name
+    assert_not airplane.user.nil?
+    assert_equal 12345, airplane.user.certificate_number
   end
 
   test "test defaults" do
@@ -45,6 +47,8 @@ class AirplaneTest < ActiveSupport::TestCase
     assert_not airplane.multi_engine_sea
     assert_not airplane.simulator
     assert_equal "Test Defaults Airplane", airplane.display_name
+    assert_not airplane.user.nil?
+    assert_equal 54321, airplane.user.certificate_number
   end
 
 end

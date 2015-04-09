@@ -5,5 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
+  # TODO - Make sure medicals are deleted if the corresponding
+  # user is deleted
   has_many :medicals, inverse_of: :user
+
+  # TODO - Make sure airplanes are deleted when the corresponding
+  # user is deleted
+  has_many :airplanes, inverse_of: :user
 end
