@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  identification: MyString
-  type: 
-  complex: false
+test_arrow:
+  identification: "N5493Z"
+  airplane_type: "PA-28R-201"
+  complex: true
   high_performance: false
   tailwheel: false
   high_altitude: false
@@ -12,28 +12,14 @@ one:
   rotorcraft: false
   powered_lift: false
   lighter_than_air: false
-  single_engine_land: false
+  single_engine_land: true
   single_engine_sea: false
   multi_engine_land: false
   multi_engine_sea: false
   simulator: false
-  display_name: MyString
+  display_name: "Test Arrow"
 
-two:
-  identification: MyString
-  type: 
-  complex: false
-  high_performance: false
-  tailwheel: false
-  high_altitude: false
-  turbine: false
-  glider: false
-  rotorcraft: false
-  powered_lift: false
-  lighter_than_air: false
-  single_engine_land: false
-  single_engine_sea: false
-  multi_engine_land: false
-  multi_engine_sea: false
-  simulator: false
-  display_name: MyString
+test_defaults:
+  identification: "N157ME"
+  airplane_type: "C172SP"
+  display_name: "Test Defaults Airplane"

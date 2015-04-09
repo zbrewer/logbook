@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409061041) do
+ActiveRecord::Schema.define(version: 20150409073101) do
 
   create_table "airplanes", force: :cascade do |t|
     t.string   "identification"
-    t.string   "type"
     t.boolean  "complex",            default: false
     t.boolean  "high_performance",   default: false
     t.boolean  "tailwheel",          default: false
@@ -33,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150409061041) do
     t.string   "display_name"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+    t.string   "airplane_type"
   end
 
   create_table "checkrides", force: :cascade do |t|
