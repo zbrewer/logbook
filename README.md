@@ -14,13 +14,13 @@ In order to set up your own development environment for this application you nee
 
 * Clone this repository from git
 
-* Install [Rails](rubyonrails.org)
+* Install [rails](http://rubyonrails.org)
 
 * Install all required gems by running `$ bundle install` from the project's root directory
 
 * Create a **secrets.yml** file in the **config** folder with the following information. `$ rake secret` can be used to generate new secret keys.
 
-```
+```ruby
 development:
   secret_key_base:
 
