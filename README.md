@@ -22,10 +22,10 @@ In order to set up your own development environment for this application you nee
 
 ```ruby
 development:
-  secret_key_base:
+  secret_key_base: your-development-key
 
 test:
-  secret_key_base:
+  secret_key_base: your-testing-key
 
 production:
   secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
