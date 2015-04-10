@@ -1,28 +1,38 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Rails Version
 
-Things you may want to cover:
+This application was built and runs on Rails 4.2.0
 
-* Ruby version
+## Setup
 
-* System dependencies
+In order to set up your own development environment for this application you need to do the following:
 
-* Configuration
+* Clone this repository from git
 
-* Database creation
+* Install [Rails](rubyonrails.org)
 
-* Database initialization
+* Install all required gems by running `$ bundle install` from the project's root directory
 
-* How to run the test suite
+* Create a **secrets.yml** file in the **config** folder with the following information. `$ rake secret` can be used to generate new secret keys.
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+development:
+  secret_key_base:
 
-* Deployment instructions
+test:
+  secret_key_base:
 
-* ...
+production:
+  secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
+```
 
+* Run the server with `$ rails server`.
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## Testing
+
+This project has unit tests that can be run with the following command: `$ rake test:all`
+
+## Resetting the database
+
+The database can be reset with the following command `$ rake db:reset`
