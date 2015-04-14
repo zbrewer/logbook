@@ -30,6 +30,7 @@ class UserTest < ActiveSupport::TestCase
     assert user.reviews[0].flight_review
     assert_not user.reviews[0].cfi_renewal
     assert_equal "Harry Potter", user.reviews[0].name_of_reviewer
+    assert user.checkrides.empty?
   end
 
   test "jane doe" do
@@ -54,6 +55,8 @@ class UserTest < ActiveSupport::TestCase
     assert_not user.flights.empty?
     assert_equal "Solo XC", user.flights[0].remarks
     assert user.reviews.empty?
+    assert_not user.checkrides.empty?
+    assert_equal "John Oliver", user.checkrides[0].examiner_name
   end
 
 end
