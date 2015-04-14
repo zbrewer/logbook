@@ -7,7 +7,11 @@ class MedicalsController < ApplicationController
     @new_medical = Medical.new(medical_params)
     @new_medical.user = current_user
     @new_medical.save
-    redirect_to "/"
+    redirect_to action: "index"
+  end
+
+  def index
+    @medical_list = current_user.medicals.order(:exam_date)
   end
 
   private
