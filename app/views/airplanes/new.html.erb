@@ -3,8 +3,66 @@
 <%= form_for :airplanes do |f| %>
 
   <div class="field">
-    <%= f.label :total_time %><br />
-    <%= f.number_field :total_time %>
+     <%= f.label :identification %><br />
+    <%= f.text_field :identification %>
+  </div>
+
+  <div class="field">
+    <%= f.label :airplane_type %><br />
+    <%= f.text_field :airplane_type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :display_name %><br />
+    <%= f.text_field :display_name %>
+  </div>
+
+  <div class="field">
+    <%= check_box_tag(:complex) %>
+    <%= label_tag(:complex, "Complex") %>
+
+    <%= check_box_tag(:high_performance) %>
+    <%= label_tag(:high_performance, "High Performance") %>
+
+    <%= check_box_tag(:tailwheel) %>
+    <%= label_tag(:tailwheel, "Tailwheel") %>
+
+    <%= check_box_tag(:high_altitude) %>
+    <%= label_tag(:high_altitude, "High Altitude") %>
+
+    <%= check_box_tag(:turbine) %>
+    <%= label_tag(:turbine, "Turbine") %>
+
+    <br />
+
+    <%= check_box_tag(:glider) %>
+    <%= label_tag(:glider, "Glider") %>
+
+    <%= check_box_tag(:rotorcraft) %>
+    <%= label_tag(:rotorcraft, "Rotorcraft") %>
+
+    <%= check_box_tag(:powered_lift) %>
+    <%= label_tag(:powered_lift, "Powered Lift") %>
+
+    <%= check_box_tag(:lighter_than_air) %>
+    <%= label_tag(:lighter_than_air, "Lighter Than Air") %>
+
+    <%= check_box_tag(:single_engine_land) %>
+    <%= label_tag(:single_engine_land, "Single Engine Land") %>
+
+    <br />
+
+    <%= check_box_tag(:single_engine_sea) %>
+    <%= label_tag(:single_engine_sea, "Single Engine Sea") %>
+
+    <%= check_box_tag(:multi_engine_land) %>
+    <%= label_tag(:multi_engine_land, "Multi-Engine Land") %>
+
+    <%= check_box_tag(:multi_engine_sea) %>
+    <%= label_tag(:multi_engine_sea, "Multi-Engine Sea") %>
+
+    <%= check_box_tag(:simulator) %>
+    <%= label_tag(:simulator, "Simulator") %>
   </div>
 
   <br />
