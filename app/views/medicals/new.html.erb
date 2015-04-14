@@ -1,0 +1,27 @@
+<h1>Add a Medical</h1>
+
+<%= form_for :medical, url: medicals_path do |f| %>
+
+  <div class="field">
+    <%= f.label :medical_class %><br />
+    <%= f.select :medical_class, [ ['First Class', 1], ['Second Class', 2], ['Third Class', 3] ] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :exam_date %><br />
+    <%= f.date_select :exam_date, order: [ :month, :day, :year ], start_year: 1915,
+      end_year: Date.today.year, date_separator: '/ ' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :examiner_name %><br />
+    <%= f.text_field :examiner_name %>
+  </div>
+
+  <br />
+
+  <div class="actions">
+    <%= f.submit "Add Medical" %>
+  </div>
+
+<% end %>
