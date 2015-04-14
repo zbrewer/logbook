@@ -12,6 +12,8 @@ class ReviewTest < ActiveSupport::TestCase
     assert review.flight_review
     assert_not review.instrument_proficiency_check
     assert_not review.cfi_renewal
+    assert_not review.flight.nil?
+    assert_equal "Local IFR training flight", review.flight.remarks
   end
 
   test "review defaults" do
@@ -21,6 +23,7 @@ class ReviewTest < ActiveSupport::TestCase
     assert_not review.flight_review
     assert_not review.instrument_proficiency_check
     assert_not review.cfi_renewal
+    assert review.flight.nil?
   end
 
 end

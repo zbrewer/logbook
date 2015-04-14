@@ -17,5 +17,7 @@ class User < ActiveRecord::Base
   # user is deleted
   has_many :endorsements, inverse_of: :user
 
+  # TODO - Test this association more (do flights under different
+  # airplanes all show up?)
   has_many :flights, through: :airplanes
 end

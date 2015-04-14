@@ -6,6 +6,7 @@ test_flight_review:
   flight_review: true
   instrument_proficiency_check: false
   cfi_renewal: false
+  flight: instrument_training
 
 review_defaults:
   review_date: 2015-04-08

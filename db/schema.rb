@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150414055806) do
+ActiveRecord::Schema.define(version: 20150414062307) do
 
   create_table "airplanes", force: :cascade do |t|
     t.string   "identification"
@@ -119,7 +119,10 @@ ActiveRecord::Schema.define(version: 20150414055806) do
     t.boolean  "cfi_renewal",                  default: false
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
+    t.integer  "flight_id"
   end
+
+  add_index "reviews", ["flight_id"], name: "index_reviews_on_flight_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
