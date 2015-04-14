@@ -16,4 +16,6 @@ class User < ActiveRecord::Base
   # TODO - Make sure endorsements are deleted when the corresponding
   # user is deleted
   has_many :endorsements, inverse_of: :user
+
+  has_many :flights, through: :airplanes
 end

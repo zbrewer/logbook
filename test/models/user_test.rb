@@ -24,6 +24,8 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 100, user.endorsements[0].cfi_certificate_number
     assert_not user.airplanes[0].flights.empty?
     assert_equal "Local IFR training flight", user.airplanes[0].flights[0].remarks
+    assert_not user.flights.empty?
+    assert_equal "Local IFR training flight", user.flights[0].remarks
   end
 
   test "jane doe" do
@@ -45,6 +47,8 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 101, user.endorsements[0].cfi_certificate_number
     assert_not user.airplanes[0].flights.empty?
     assert_equal "Solo XC", user.airplanes[0].flights[0].remarks
+    assert_not user.flights.empty?
+    assert_equal "Solo XC", user.flights[0].remarks
   end
 
 end
