@@ -26,6 +26,8 @@ class AirplaneTest < ActiveSupport::TestCase
     assert_equal "Test Arrow", airplane.display_name
     assert_not airplane.user.nil?
     assert_equal 12345, airplane.user.certificate_number
+    assert_not airplane.flights.empty?
+    assert_equal "Local IFR training flight", airplane.flights[0].remarks
   end
 
   test "test defaults" do
@@ -49,6 +51,8 @@ class AirplaneTest < ActiveSupport::TestCase
     assert_equal "Test Defaults Airplane", airplane.display_name
     assert_not airplane.user.nil?
     assert_equal 54321, airplane.user.certificate_number
+    assert_not airplane.flights.empty?
+    assert_equal "Solo XC", airplane.flights[0].remarks
   end
 
 end

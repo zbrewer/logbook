@@ -25,6 +25,8 @@ class FlightTest < ActiveSupport::TestCase
     assert_in_delta 1.3, flight.night_time, 0.0000000001
     assert_in_delta 0, flight.cross_country_time, 0.0000000001
     assert_in_delta 0, flight.solo_time, 0.0000000001
+    assert_not flight.airplane.nil?
+    assert_equal "N5493Z", flight.airplane.identification
   end
 
   test "cross country flight" do
@@ -47,6 +49,8 @@ class FlightTest < ActiveSupport::TestCase
     assert_in_delta 0, flight.night_time, 0.0000000001
     assert_in_delta 3.4, flight.cross_country_time, 0.0000000001
     assert_in_delta 3.4, flight.solo_time, 0.0000000001
+    assert_not flight.airplane.nil?
+    assert_equal "N157ME", flight.airplane.identification
   end
 
 end
