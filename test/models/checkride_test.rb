@@ -22,6 +22,8 @@ class CheckrideTest < ActiveSupport::TestCase
     assert_not checkride.glider
     assert_not checkride.powered_lift
     assert_not checkride.lighter_than_air
+    assert_not checkride.flight.nil?
+    assert_equal "Solo XC", checkride.flight.remarks
   end
 
   test "instrument checkride with defaults" do
@@ -40,6 +42,7 @@ class CheckrideTest < ActiveSupport::TestCase
     assert_not checkride.glider
     assert_not checkride.powered_lift
     assert_not checkride.lighter_than_air
+    assert checkride.flight.nil?
   end
 
 end

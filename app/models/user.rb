@@ -21,5 +21,7 @@ class User < ActiveRecord::Base
   # airplanes all show up?)
   has_many :flights, through: :airplanes
 
+  # TODO - Test this association more (do reviews under different
+  # flights under different airplanes all show up?)
   has_many :reviews, through: :flights
 end

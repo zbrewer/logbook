@@ -6,4 +6,8 @@ class Flight < ActiveRecord::Base
   # TODO - Make sure that the review is deleted if the corresponding
   # flight is deleted
   has_one :review, inverse_of: :flight
+
+  # TODO - Make sure that the checkride is deleted if the corresponding
+  # flight is deleted
+  has_one :checkride, inverse_of: :flight
 end

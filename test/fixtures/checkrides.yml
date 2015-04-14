@@ -16,6 +16,7 @@ ppl_checkride:
   glider: false
   powered_lift: false
   lighter_than_air: false
+  flight: cross_country
 
 instrument_with_defaults:
   checkride_date: 2015-04-08

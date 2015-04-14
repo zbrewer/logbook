@@ -30,6 +30,7 @@ class FlightTest < ActiveSupport::TestCase
     assert_not flight.review.nil?
     assert flight.review.flight_review
     assert_not flight.review.instrument_proficiency_check
+    assert flight.checkride.nil?
   end
 
   test "cross country flight" do
@@ -55,6 +56,10 @@ class FlightTest < ActiveSupport::TestCase
     assert_not flight.airplane.nil?
     assert_equal "N157ME", flight.airplane.identification
     assert flight.review.nil?
+    assert_not flight.checkride.nil?
+    assert flight.checkride.certificate
+    assert_equal "PPL", flight.checkride.certificate_type
+    assert_equal "John Oliver", flight.checkride.examiner_name
   end
 
 end
