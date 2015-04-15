@@ -1,0 +1,34 @@
+<h1>Flights</h1>
+
+<div>
+  <table>
+    <tr>
+      <th>Airplane Identification</th>
+      <th>Date</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Total Time</th>
+      <th>Day Landings</th>
+      <th>Night Landings</th>
+      <th>Approaches</th>
+      <th>Holds</th>
+      <th>Remarks</th>
+    </tr>
+
+    <% for flight in @flight_list %>
+      <tr>
+        <td><%= flight.airplane.identification %></td>
+        <td><%= flight.flight_date.strftime("%m/%d/%Y") %></td>
+        <td><%= flight.departure_airport %></td>
+        <td><%= flight.destination_airports %></td>
+        <td><%= '%.1f' % flight.total_time %></td>
+        <td><%= flight.day_landings %></td>
+        <td><%= flight.night_landings %></td>
+        <td><%= flight.number_approaches %></td>
+        <td><%= flight.number_holds %></td>
+        <td><%= display_remarks(flight.remarks) %></td>
+      </tr>
+    <% end %>
+
+  </table>
+</div>

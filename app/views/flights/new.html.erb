@@ -1,0 +1,107 @@
+<h1>Add a flight</h1>
+
+<%= form_for :flight, url: flights_path do |f| %>
+
+  <div class="field">
+    <%= f.label :airplane_id %><br />
+    <%= f.select :airplane_id, @airplane_list.collect { |airplane| [ airplane.display_name, airplane.id] } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :flight_date %><br />
+    <%= f.date_select :flight_date, order: [ :month, :day, :year ], start_year: 1915, end_year: Date.today.year,
+      date_separator: '/ ' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :departure_airport %><br />
+    <%= f.text_field :departure_airport %>
+  </div>
+
+  <div class="field">
+    <%= f.label :destination_airports %><br />
+    <%= f.text_field :destination_airports %>
+  </div>
+
+  <div class="field">
+    <%= f.label :total_time %><br />
+    <%= f.number_field :total_time, :value => 0, :step => 0.1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pic_time %><br />
+    <%= f.number_field :pic_time, :value => 0, :step => 0.1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sic_time %><br />
+    <%= f.number_field :sic_time, :value => 0, :step => 0.1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :dual_received %><br />
+    <%= f.number_field :dual_received, :value => 0, :step => 0.1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :dual_given %><br />
+    <%= f.number_field :dual_given, :value => 0, :step => 0.1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :actual_instrument %><br />
+    <%= f.number_field :actual_instrument, :value => 0, :step => 0.1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :simulated_instrument %><br />
+    <%= f.number_field :simulated_instrument, :value => 0, :step => 0.1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :night_time %><br />
+    <%= f.number_field :night_time, :value => 0, :step => 0.1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cross_country_time %><br />
+    <%= f.number_field :cross_country_time, :value => 0, :step => 0.1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :solo_time %><br />
+    <%= f.number_field :solo_time, :value => 0, :step => 0.1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :day_landings %><br />
+    <%= f.number_field :day_landings, :value => 0, :step => 1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :night_landings %><br />
+    <%= f.number_field :night_landings, :value => 0, :step => 1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :number_approaches %><br />
+    <%= f.number_field :number_approaches, :value => 0, :step => 1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :number_holds %><br />
+    <%= f.number_field :number_holds, :value => 0, :step => 1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :remarks %><br />
+    <%= f.text_area :remarks %>
+  </div>
+
+  <br />
+
+  <div class="actions">
+    <%= f.submit "Add flight" %>
+  </div>
+
+<% end %>

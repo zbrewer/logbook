@@ -16,7 +16,8 @@
           Certificate Number: <%= current_user.certificate_number %> <%= current_user.certificate_issue_date.strftime("Issued on %m/%d/%Y") %> | 
           <%= current_user.birth_date.strftime("Born %m/%d/%Y") %> | 
           <%= link_to 'Edit Profile', edit_user_registration_path, :class => 'navbar-link' %> | 
-          <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => 'navbar-link' %>
+          <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => 'navbar-link' %> | 
+          <%= link_to 'Home', controller: 'home', action: 'index' %>
         </p>
       <% else %>
          <p>
