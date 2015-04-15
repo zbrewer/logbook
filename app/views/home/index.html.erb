@@ -1,6 +1,10 @@
+<%# View for the home page %>
+
 <h1>Home Page</h1>
 
 <% if user_signed_in? %>
+
+  <%# Display this information if there is a user signed in %>
 
   <h2>Medicals</h2>
   <%= link_to "Add medical", controller: "medicals", action: "new" %><br />
@@ -15,6 +19,8 @@
   <%= link_to "View flights", controller: "flights", action: "index" %>
 
 <% else %>
+
+  <%# Display this information if there is no user signed in %>
 
   <h2>Welcome!</h2>
   <p>Please make an account or sign in if you already have one.</p>

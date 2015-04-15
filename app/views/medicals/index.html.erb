@@ -1,13 +1,17 @@
+<%# View for displaying a list of medicals %>
+
 <h1>Medical List</h1>
 
 <div>
   <table>
+    <%# Column labels %>
     <tr>
       <th>Class</th>
       <th>Exam Date</th>
       <th>Examiner</th>
     </tr>
 
+    <%# Display this information for each medical in the list %>
     <% for medical in @medical_list %>
       <tr>
         <td><%= medical.medical_class %></td>

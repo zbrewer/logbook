@@ -35,7 +35,7 @@ production:
 
 ## Testing
 
-This project has unit tests that can be run with the `$ rake test:all` command.
+This project has unit tests that can be run with the `$ rake test` command.
 
 ## Resetting the database
 

@@ -1,41 +1,67 @@
 <!DOCTYPE html>
+
+<%# This is the template which wraps all other views %>
+
 <html>
-<head>
-  <title>Logbook</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
 
-   <div class="navbar">
+  <head>
+    <title>Logbook</title>
+
+    <%# Include all of the CSS and Javascript %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+
+
+
+
+  <body>
+
+    <%# Navbar displayed on each page %>
+    <div class="navbar">
       <% if user_signed_in? %>
+
+        <%# Display this information in the navbar if there is a user signed in %>
         <p>
-          Logged in as: <%= current_user.first_name %> <%= current_user.last_name %>(<%= current_user.certificate_type %>) | 
-          <%= current_user.email %> | 
-          Certificate Number: <%= current_user.certificate_number %> <%= current_user.certificate_issue_date.strftime("Issued on %m/%d/%Y") %> | 
-          <%= current_user.birth_date.strftime("Born %m/%d/%Y") %> | 
-          <%= link_to 'Edit Profile', edit_user_registration_path, :class => 'navbar-link' %> | 
-          <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => 'navbar-link' %> | 
-          <%= link_to 'Home', controller: 'home', action: 'index' %>
+        Logged in as: <%= current_user.first_name %> <%= current_user.last_name %>(<%= current_user.certificate_type %>) | 
+        <%= current_user.email %> | 
+        Certificate Number: <%= current_user.certificate_number %> <%= current_user.certificate_issue_date.strftime("Issued on %m/%d/%Y") %> | 
+        <%= current_user.birth_date.strftime("Born %m/%d/%Y") %> | 
+        <%= link_to 'Edit Profile', edit_user_registration_path, :class => 'navbar-link' %> | 
+        <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => 'navbar-link' %> | 
+        <%= link_to 'Home', controller: 'home', action: 'index' %>
         </p>
+
       <% else %>
-         <p>
-            <%= link_to 'Sign Up', new_user_registration_path, :class => 'navbar-link' %> | 
-            <%= link_to 'Login', new_user_session_path, :class => 'navbar-link' %>
-         </p>
+
+        <%# Display this information in the navbar if there is no user signed in %>
+        <p>
+        <%= link_to 'Sign Up', new_user_registration_path, :class => 'navbar-link' %> | 
+        <%= link_to 'Login', new_user_session_path, :class => 'navbar-link' %>
+        </p>
+
       <% end %>
-   </div>
+    </div>
 
-   <% if notice %>
+
+
+    <%# Notifications for the devise framework %>
+    <% if notice %>
       <p class="notice"><%= notice %></p>
-   <% end %>
+    <% end %>
 
-   <% if alert %>
+    <% if alert %>
       <p class="alert"><%= alert %></p>
-   <% end %>
+    <% end %>
 
-<%= yield %>
 
-</body>
+
+    <%# Display the views here %>
+    <%= yield %>
+
+  </body>
+
 </html>

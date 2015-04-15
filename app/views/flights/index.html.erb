@@ -1,7 +1,10 @@
+<%# View for displaying a list of all flights %>
+
 <h1>Flights</h1>
 
 <div>
   <table>
+    <%# Column labels %>
     <tr>
       <th>Airplane Identification</th>
       <th>Date</th>
@@ -15,6 +18,7 @@
       <th>Remarks</th>
     </tr>
 
+    <%# Display this information for each flight %>
     <% for flight in @flight_list %>
       <tr>
         <td><%= flight.airplane.identification %></td>

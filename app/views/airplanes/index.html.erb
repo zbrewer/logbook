@@ -1,7 +1,10 @@
+<%# View for displaying all airplanes in a list. %>
+
 <h1>All airplanes</h1>
 
 <div>
   <table>
+    <%# Column labels %>
     <tr>
       <th>Display Name</th>
       <th>Identification</th>
@@ -22,6 +25,7 @@
       <th>Simulator</th>
     </tr>
 
+    <%# Dsiplay this for each airplane in the list %>
     <% for airplane in @airplane_list %>
       <tr>
         <td><%= airplane.display_name %></td>
