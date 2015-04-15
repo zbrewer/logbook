@@ -12,6 +12,7 @@ class AirplanesController < ApplicationController
    end
 
    def index
+     @airplane_list = current_user.airplanes
    end
 
    private
