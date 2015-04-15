@@ -1,9 +1,18 @@
 <h1>Home Page</h1>
 
-<h2>Medicals</h2>
-<%= link_to "Add medical", controller: "medicals", action: "new" %><br />
-<%= link_to "View medicals", controller: "medicals", action: "index" %>
+<% if user_signed_in? %>
 
-<h2>Airplanes</h2>
-<%= link_to "Add airplane", controller: "airplanes", action: "new" %><br />
-<%= link_to "View airplanes", controller: "airplanes", action: "index" %>
+  <h2>Medicals</h2>
+  <%= link_to "Add medical", controller: "medicals", action: "new" %><br />
+  <%= link_to "View medicals", controller: "medicals", action: "index" %>
+
+  <h2>Airplanes</h2>
+  <%= link_to "Add airplane", controller: "airplanes", action: "new" %><br />
+  <%= link_to "View airplanes", controller: "airplanes", action: "index" %>
+
+<% else %>
+
+  <h2>Welcome!</h2>
+  <p>Please make an account or sign in if you already have one.</p>
+
+<% end %>
