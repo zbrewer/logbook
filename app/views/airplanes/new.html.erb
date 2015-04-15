@@ -1,6 +1,6 @@
 <h1>New Airplane</h1>
 
-<%= form_for :airplanes do |f| %>
+<%= form_for :airplane, url: airplanes_path do |f| %>
 
   <div class="field">
      <%= f.label :identification %><br />
@@ -18,51 +18,51 @@
   </div>
 
   <div class="field">
-    <%= check_box_tag(:complex) %>
-    <%= label_tag(:complex, "Complex") %>
+    <%= f.label :complex %>
+    <%= f.check_box :complex %>
 
-    <%= check_box_tag(:high_performance) %>
-    <%= label_tag(:high_performance, "High Performance") %>
+    <%= f.label :high_performance %>
+    <%= f.check_box :high_performance %>
 
-    <%= check_box_tag(:tailwheel) %>
-    <%= label_tag(:tailwheel, "Tailwheel") %>
+    <%= f.label :tailwheel %>
+    <%= f.check_box :tailwheel %>
 
-    <%= check_box_tag(:high_altitude) %>
-    <%= label_tag(:high_altitude, "High Altitude") %>
+    <%= f.label :high_altitude %>
+    <%= f.check_box :high_altitude %>
 
-    <%= check_box_tag(:turbine) %>
-    <%= label_tag(:turbine, "Turbine") %>
-
-    <br />
-
-    <%= check_box_tag(:glider) %>
-    <%= label_tag(:glider, "Glider") %>
-
-    <%= check_box_tag(:rotorcraft) %>
-    <%= label_tag(:rotorcraft, "Rotorcraft") %>
-
-    <%= check_box_tag(:powered_lift) %>
-    <%= label_tag(:powered_lift, "Powered Lift") %>
-
-    <%= check_box_tag(:lighter_than_air) %>
-    <%= label_tag(:lighter_than_air, "Lighter Than Air") %>
-
-    <%= check_box_tag(:single_engine_land) %>
-    <%= label_tag(:single_engine_land, "Single Engine Land") %>
+    <%= f.label :turbine %>
+    <%= f.check_box :turbine %>
 
     <br />
 
-    <%= check_box_tag(:single_engine_sea) %>
-    <%= label_tag(:single_engine_sea, "Single Engine Sea") %>
+    <%= f.label :glider %>
+    <%= f.check_box :glider %>
 
-    <%= check_box_tag(:multi_engine_land) %>
-    <%= label_tag(:multi_engine_land, "Multi-Engine Land") %>
+    <%= f.label :rotorcraft %>
+    <%= f.check_box :rotorcraft %>
 
-    <%= check_box_tag(:multi_engine_sea) %>
-    <%= label_tag(:multi_engine_sea, "Multi-Engine Sea") %>
+    <%= f.label :powered_lift %>
+    <%= f.check_box :powered_lift %>
 
-    <%= check_box_tag(:simulator) %>
-    <%= label_tag(:simulator, "Simulator") %>
+    <%= f.label :lighter_than_air %>
+    <%= f.check_box :lighter_than_air %>
+
+    <%= f.label :single_engine_land %>
+    <%= f.check_box :single_engine_land %>
+
+    <br />
+
+    <%= f.label :single_engine_sea %>
+    <%= f.check_box :single_engine_sea %>
+
+    <%= f.label :multi_engine_land %>
+    <%= f.check_box :multi_engine_land %>
+
+    <%= f.label :multi_engine_sea %>
+    <%= f.check_box :multi_engine_sea %>
+
+    <%= f.label :simulator %>
+    <%= f.check_box :simulator %>
   </div>
 
   <br />
