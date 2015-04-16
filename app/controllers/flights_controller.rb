@@ -36,6 +36,38 @@ class FlightsController < ApplicationController
 
 
 
+  # The controller for showing information about a specific flight. Gets the
+  # current flight based on the id in the params or nil if the flight is not
+  # found.
+  def show
+    begin
+      @current_flight = Flight.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      @current_flight = nil
+    end
+
+    # TODO - Move this somewhere central
+    # All of the times stored in the flight to display (if they are non-zero)
+    @times_to_display = { "total_time" => "Total Time", "pic_time" => "PIC", "sic_time" => "SIC",
+                          "dual_received" => "Dual Received", "dual_given" => "Dual Given",
+                          "actual_instrument" => "Actual Instrument", "simulated_instrument" =>
+                          "Simulated Instrument", "night_time" => "Night", "cross_country_time" =>
+                          "Cross Country", "solo_time" => "Solo" }
+
+    # TODO - Move this somewhere central
+    # All of the attributes of airplanes to display flight time based on
+    @airplane_display_times = { "complex" => "Complex", "high_performance" => "High Performance",
+                                "tailwheel" => "Tailwheel", "high_altitude" => "High Altitude",
+                                "turbine" => "Turbine", "glider" => "Glider", "rotorcraft" =>
+                                "Rotorcraft", "powered_lift" => "Powered Lift", "lighter_than_air" =>
+                                "Lighter Than Air", "single_engine_land" => "Single Engine Land",
+                                "single_engine_sea" => "Single Engine Sea", "multi_engine_land" =>
+                                "Multi-Engine Land", "multi_engine_sea" => "Multi-Engine Sea",
+                                "simulator" => "Simulator" }
+  end
+
+
+
 
 
   private

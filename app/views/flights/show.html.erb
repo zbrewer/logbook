@@ -1,0 +1,116 @@
+<%# Display all information about a specific flight or an error message %>
+<%# if the flight isn't found. %>
+
+<h1>Flight Information</h1>
+
+<% if @current_flight.nil? %>
+
+  <%# Message to display if the flight isn't found %>
+
+  <h2>Flight not found</h2>
+
+<% else %>
+
+  <%# Information to display if the flight is found %>
+
+  <div>
+    <strong>Aircraft Identification:</strong>
+    <%= @current_flight.airplane.identification %>
+  </div>
+
+
+
+  <div>
+    <strong>Aircraft Type:</strong>
+    <%= @current_flight.airplane.airplane_type %>
+  </div>
+
+
+
+  <div>
+    <strong>Date:</strong>
+    <%= @current_flight.flight_date.strftime("%m/%d/%Y") %>
+  </div>
+
+
+
+  <div>
+    <strong>From:</strong>
+    <%= @current_flight.departure_airport %>
+  </div>
+
+
+
+  <div>
+    <strong>To:</strong>
+    <%= @current_flight.destination_airports %>
+  </div>
+
+
+
+  <%# Display the non-zero times listed in the flight %>
+  <% @current_flight.attributes.each_pair do |name, value| %>
+    <% if @times_to_display[name] != nil and value != 0 %>
+      <div>
+        <strong><%= @times_to_display[name] %>:</strong>
+        <%= "%.1f" % value %>
+      </div>
+    <% end %>
+  <% end %>
+
+
+
+  <%# Display the appropriate times based on airplane type %>
+  <% @current_flight.airplane.attributes.each_pair do |name, value| %>
+    <% if @airplane_display_times[name] != nil and value %>
+      <div>
+        <strong><%= @airplane_display_times[name] %>:</strong>
+        <%= "%.1f" % @current_flight.total_time %>
+      </div>
+    <% end %>
+  <% end %>
+
+
+
+  <% if @current_flight.day_landings != 0 %>
+    <div>
+      <strong>Day Landings:</strong>
+      <%= @current_flight.day_landings %>
+    </div>
+  <% end %>
+
+
+
+  <% if @current_flight.night_landings != 0 %>
+    <div>
+      <strong>Night Landings:</strong>
+      <%= @current_flight.night_landings %>
+    </div>
+  <% end %>
+
+
+
+  <% if @current_flight.number_approaches != 0 %>
+    <div>
+      <strong>Approaches:</strong>
+      <%= @current_flight.number_approaches %>
+    </div>
+  <% end %>
+
+
+
+  <% if @current_flight.number_holds != 0 %>
+    <div>
+      <strong>Holds:</strong>
+      <%= @current_flight.number_holds %>
+    </div>
+  <% end %>
+
+
+
+  <div>
+    <strong>Remarks:</strong>
+    <%= @current_flight.remarks %>
+  </div>
+
+<% end %>

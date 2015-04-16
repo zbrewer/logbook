@@ -16,6 +16,7 @@
       <th>Approaches</th>
       <th>Holds</th>
       <th>Remarks</th>
+      <th></th>
     </tr>
 
     <%# Display this information for each flight %>
@@ -31,6 +32,7 @@
         <td><%= flight.number_approaches %></td>
         <td><%= flight.number_holds %></td>
         <td><%= display_remarks(flight.remarks) %></td>
+        <td><%= link_to "More...", :controller => "flights", :action => "show", :id => flight.id %></td>
       </tr>
     <% end %>
 
