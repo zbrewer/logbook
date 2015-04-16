@@ -15,7 +15,8 @@
 
   <div>
     <strong>Aircraft Identification:</strong>
-    <%= @current_flight.airplane.identification %>
+    <%= link_to @current_flight.airplane.identification, :controller => "airplanes", :action => "show",
+        :id => @current_flight.airplane.id %>
   </div>
 
 

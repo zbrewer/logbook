@@ -28,7 +28,8 @@
     <%# Dsiplay this for each airplane in the list %>
     <% for airplane in @airplane_list %>
       <tr>
-        <td><%= airplane.display_name %></td>
+        <td><%= link_to airplane.display_name, :controller => "airplanes", :action => "show",
+                :id => airplane.id %></td>
         <td><%= airplane.identification %></td>
         <td><%= airplane.airplane_type %></td>
         <td><%= airplane.complex %></td>

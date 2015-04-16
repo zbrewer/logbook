@@ -22,7 +22,8 @@
     <%# Display this information for each flight %>
     <% for flight in @flight_list %>
       <tr>
-        <td><%= flight.airplane.identification %></td>
+        <td><%= link_to flight.airplane.identification, :controller => "airplanes", :action => "show",
+                :id => flight.airplane.id %></td>
         <td><%= flight.flight_date.strftime("%m/%d/%Y") %></td>
         <td><%= flight.departure_airport %></td>
         <td><%= flight.destination_airports %></td>

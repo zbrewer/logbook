@@ -1,0 +1,48 @@
+<%# View for displaying all information about a specific airplane %>
+
+<h1>Airplane Information</h1>
+
+<% if @current_airplane.nil? %>
+
+  <%# Message to display if the airplane isn't found %>
+
+  <h2>Airplane not found</h2>
+
+<% else %>
+
+  <%# Information to display if the airplane is found %>
+
+  <div>
+    <strong>Display Name:</strong>
+    <%= @current_airplane.display_name %>
+  </div>
+
+
+
+  <div>
+    <strong>Identification:</strong>
+    <%= @current_airplane.identification %>
+  </div>
+
+
+
+  <div>
+    <strong>Type:</strong>
+    <%= @current_airplane.airplane_type %>
+  </div>
+
+
+
+  <%# Display all of the airplane's attributes that are true %>
+  <div>
+    <strong>Attributes:</strong>
+    <ul>
+      <% @current_airplane.attributes.each_pair do |name, value| %>
+        <% if @airplane_display_attributes[name] != nil and value %>
+          <li><%= @airplane_display_attributes[name] %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+<% end %>

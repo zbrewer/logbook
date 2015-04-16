@@ -35,6 +35,30 @@ class AirplanesController < ApplicationController
 
 
 
+  # The controller for showing information about a specific airplane based
+  # on the airplane's id. Gracefully handles airplanes that are not found by
+  # displaying a "Not found" message.
+  def show
+    begin
+      @current_airplane = Airplane.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      @current_airplane = nil
+    end
+
+    # TODO - Move this somewhere central
+    # All of the attribute of an airplane to display
+    @airplane_display_attributes = { "complex" => "Complex", "high_performance" => "High Performance",
+                                     "tailwheel" => "Tailwheel", "high_altitude" => "High Altitude",
+                                     "turbine" => "Turbine", "glider" => "Glider", "rotorcraft" =>
+                                     "Rotorcraft", "powered_lift" => "Powered Lift", "lighter_than_air" =>
+                                     "Lighter Than Air", "single_engine_land" => "Single Engine Land",
+                                     "single_engine_sea" => "Single Engine Sea", "multi_engine_land" =>
+                                     "Multi-Engine Land", "multi_engine_sea" => "Multi-Engine Sea",
+                                     "simulator" => "Simulator" }
+  end
+
+
+
 
 
   private
