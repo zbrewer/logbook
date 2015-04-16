@@ -51,7 +51,7 @@
 
   <%# Display the non-zero times listed in the flight %>
   <% @current_flight.attributes.each_pair do |name, value| %>
-    <% if @times_to_display[name] != nil and value != 0 %>
+    <% if @times_to_display[name] != nil and value != nil and value != 0 %>
       <div>
         <strong><%= @times_to_display[name] %>:</strong>
         <%= "%.1f" % value %>
@@ -113,5 +113,41 @@
     <strong>Remarks:</strong>
     <%= @current_flight.remarks %>
   </div>
+
+
+
+  <%# Display information about reviews if the flight was a review and allow users to add one if not%>
+  <% if not @current_flight.review.nil? %>
+
+    <%# Flight was a review %>
+
+    <br />
+    <strong>Review:</strong>
+
+    <div>
+      <strong>Reviewer Name:</strong>
+      <%= @current_flight.review.name_of_reviewer %>
+    </div>
+
+    <div>
+      <strong>Review Type(s)</strong>
+      <ul>
+        <% @current_flight.review.attributes.each_pair do |name, value| %>
+          <% if @review_types[name] != nil and value %>
+            <li><%= @review_types[name] %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+  <% else %>
+
+    <%# Flight wasn't a review %>
+
+    <br />
+    <strong>Review:</strong>
+    <%= link_to "Add Review", :controller => "reviews", :action => "new", :flight_id => @current_flight.id %>
+
+  <% end %>
 
 <% end %>

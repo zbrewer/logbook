@@ -1,0 +1,45 @@
+<%# View for the form where users can add a review %>
+
+<h1>New Review</h1>
+
+<% if @current_flight.nil? %>
+
+  <%# Message to display if the passed flight id doesn't exist %>
+
+  <h2>Associated flight doesn't exist</h2>
+
+<% else %>
+
+  <%# Form and info to display if flight is found %>
+
+  <h4>Adding review to flight in <%= @current_flight.airplane.identification %> on <%= @current_flight.flight_date.strftime("%m/%d/%Y") %></h4>
+
+  <%= form_for :review, url: reviews_path do |f| %>
+
+    <div class="field">
+      <%= f.label :name_of_reviewer, "Reviewer Name" %><br />
+      <%= f.text_field :name_of_reviewer %>
+    </div>
+
+    <div class="field">
+      <%= f.label :flight_review, "BFR" %>
+      <%= f.check_box :flight_review %>
+
+      <%= f.label :instrument_proficiency_check, "IPC"%>
+      <%= f.check_box :instrument_proficiency_check %>
+
+      <%= f.label :cfi_renewal, "CFI Renewal" %>
+      <%= f.check_box :cfi_renewal %>
+    </div>
+
+    <%= f.hidden_field :flight_id, :value => @current_flight.id %>
+    <%= f.hidden_field :review_date, :value => @current_flight.flight_date %>
+
+    <br />
+
+    <div class="actions">
+      <%= f.submit "Add review" %>
+    </div>
+
+  <% end %>
+<% end %>

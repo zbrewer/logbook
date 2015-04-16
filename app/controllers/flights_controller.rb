@@ -64,6 +64,11 @@ class FlightsController < ApplicationController
                                 "single_engine_sea" => "Single Engine Sea", "multi_engine_land" =>
                                 "Multi-Engine Land", "multi_engine_sea" => "Multi-Engine Sea",
                                 "simulator" => "Simulator" }
+
+    # TODO - Move this somewhere central
+    # All of the different types of reviews to show
+    @review_types = { "flight_review" => "BFR", "instrument_proficiency_check" => "IPC",
+                      "cfi_renewal" => "CFI Renewal" }
   end
 
 
