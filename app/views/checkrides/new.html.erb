@@ -1,0 +1,85 @@
+<%# View for the form where users can add a checkride %>
+
+<h1>New Checkride</h1>
+
+<% if @current_flight.nil? %>
+
+  <%# Message to display if the passed flight id doesn't exist %>
+
+  <h2>Associated flight doesn't exist</h2>
+
+<% else %>
+
+  <%# Form and info to display if flight is found %>
+
+  <h4>Adding checkride to flight in <%= @current_flight.airplane.identification %> on <%= @current_flight.flight_date.strftime("%m/%d/%Y") %></h4>
+
+  <%= form_for :checkride, url: checkrides_path do |f| %>
+
+    <div class="field">
+      <%= f.label :examiner_name %><br />
+      <%= f.text_field :examiner_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :cfi, "CFI" %>
+      <%= f.check_box :cfi %>
+
+      <%= f.label :cfii, "CFII" %>
+      <%= f.check_box :cfii %>
+
+      <%= f.label :instrument %>
+      <%= f.check_box :instrument %>
+
+      <%= f.label :single_engine_land %>
+      <%= f.check_box :single_engine_land %>
+
+      <%= f.label :single_engine_sea %>
+      <%= f.check_box :single_engine_sea %>
+
+      <br />
+
+      <%= f.label :multi_engine_land %>
+      <%= f.check_box :multi_engine_land %>
+
+      <%= f.label :multi_engine_sea %>
+      <%= f.check_box :multi_engine_sea %>
+
+      <%= f.label :rotorcraft %>
+      <%= f.check_box :rotorcraft %>
+
+      <%= f.label :glider %>
+      <%= f.check_box :glider %>
+
+      <%= f.label :powered_lift %>
+      <%= f.check_box :powered_lift %>
+
+      <br />
+
+      <%= f.label :lighter_than_air %>
+      <%= f.check_box :lighter_than_air %>
+    </div>
+
+    <br />
+
+    <div class="field">
+      <%= f.label :certificate %>
+      <%= f.check_box :certificate %>
+      <br />
+      <%= f.label :certificate_type %>
+      <%= f.select :certificate_type, [ ['Student Pilot', 'STU'], ['Sport Pilot', 'SPT'],
+                   ['Recreational Pilot', 'RPL'], ['Private Pilot', 'PPL'], ['Commercial Pilot', 'CPL'],
+                   ['Airline Transport Pilot', 'ATP'] ], {include_blank: true} %>
+    </div>
+
+    <%= f.hidden_field :flight_id, :value => @current_flight.id %>
+    <%= f.hidden_field :checkride_date, :value => @current_flight.flight_date %>
+
+    <br />
+
+    <div class="actions">
+      <%= f.submit "Add checkride" %>
+    </div>
+
+  <% end %>
+<% end %>

@@ -69,6 +69,15 @@ class FlightsController < ApplicationController
     # All of the different types of reviews to show
     @review_types = { "flight_review" => "BFR", "instrument_proficiency_check" => "IPC",
                       "cfi_renewal" => "CFI Renewal" }
+
+    # TODO - Move this to somewhere central
+    # All of the different types of checkride that might be displayed
+    @checkride_types = { "cfi" => "CFI", "cfii" => "CFII", "instrument" => "Instrument",
+                         "single_engine_land" => "Single Engine Land", "single_engine_sea" =>
+                         "Single Engine Sea", "multi_engine_land" => "Multi-Engine Land",
+                         "multi_engine_sea" => "Multi-Engine Sea", "rotorcraft" => "Rotorcraft",
+                         "glider" => "Glider", "powered_lift" => "Powered Lift", "lighter_than_air" =>
+                         "Lighter Than Air" }
   end
 
 

@@ -150,4 +150,47 @@
 
   <% end %>
 
+
+
+  <br />
+
+
+
+  <%# Display information about checkrides if the flight was a checkride and allow users to add one if not%>
+  <% if not @current_flight.checkride.nil? %>
+
+    <%# Flight was a checkride %>
+
+    <br />
+    <strong>Checkride:</strong>
+
+    <div>
+      <strong>Examiner:</strong>
+      <%= @current_flight.checkride.examiner_name %>
+    </div>
+
+    <div>
+      <strong>Checkride Type:</strong>
+      <% if @current_flight.checkride.certificate %>
+        <%= @current_flight.checkride.certificate_type %>
+      <% end %>
+      <ul>
+        <% @current_flight.checkride.attributes.each_pair do |name, value| %>
+          <% if @checkride_types[name] != nil and value %>
+            <li><%= @checkride_types[name] %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+  <% else %>
+
+    <%# Flight wasn't a checkride %>
+
+    <br />
+    <strong>Checkride:</strong>
+    <%= link_to "Add Checkride", :controller => "checkrides", :action => "new", :flight_id => @current_flight.id %>
+
+  <% end %>
+
 <% end %>
