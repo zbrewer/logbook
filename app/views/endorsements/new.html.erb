@@ -1,0 +1,49 @@
+<%# View for the form where users can add an endorsement%>
+
+<h1>New Endorsement</h1>
+
+<%= form_for :endorsement, url: endorsements_path do |f| %>
+
+  <div class="field">
+    <%= f.label :endorsement_date %><br />
+    <%= f.date_select :endorsement_date, order: [ :month, :day, :year ], start_year: 1915,
+        end_year: Date.today.year, sate_separator: '/ ' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cfi_name, "CFI Name" %><br />
+    <%= f.text_field :cfi_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cfi_certificate_number, "CFI Certificate Number" %><br />
+    <%= f.number_field :cfi_certificate_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cfi_expiration_date, "CFI Expiration Date" %><br />
+    <%= f.date_select :cfi_expiration_date, order: [ :month, :day, :year ], start_year: 1915,
+        end_year: Date.today.year + 5, sate_separator: '/ ' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :complex %>
+    <%= f.check_box :complex %>
+
+    <%= f.label :high_performance %>
+    <%= f.check_box :high_performance %>
+
+    <%= f.label :tailwheel %>
+    <%= f.check_box :tailwheel %>
+
+    <%= f.label :high_altitude %>
+    <%= f.check_box :high_altitude %>
+  </div>
+
+  <br />
+
+  <div class="actions">
+    <%= f.submit "Add endorsement" %>
+  </div>
+
+<% end %>

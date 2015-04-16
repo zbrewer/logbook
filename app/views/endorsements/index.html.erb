@@ -1,0 +1,33 @@
+<%# View for displaying a list of all of a user's endorsements %>
+
+<h1>Endorsements</h1>
+
+<div>
+  <table>
+    <%# Column labels %>
+    <tr>
+      <th>Endorsement Date</th>
+      <th>CFI Name</th>
+      <th>CFI Certificate Number</th>
+      <th>CFI Expiration Date</th>
+      <th>Endorsement Type</th>
+    </tr>
+
+    <%# Display information for each endorsement %>
+    <% for endorsement in @endorsement_list %>
+      <tr>
+        <td><%= endorsement.endorsement_date.strftime("%m/%d/%Y") %></td>
+        <td><%= endorsement.cfi_name %></td>
+        <td><%= endorsement.cfi_certificate_number %></td>
+        <td><%= endorsement.cfi_expiration_date.strftime("%m/%d/%Y") %></td>
+        <td>
+          <% endorsement.attributes.each_pair do |name, value| %>
+            <% if @endorsement_types[name] != nil and value %>
+              <%= @endorsement_types[name] %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <%end %>
+  </table>
+</div>
