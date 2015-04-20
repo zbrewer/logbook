@@ -25,7 +25,18 @@ class ReviewsController < ApplicationController
 
     # TODO - Change this to redirect to the page where the user was before
     # adding a review?
-    redirect_to controller: "flights", action: "index"
+    redirect_to controller: "flights", action: "show", id: params[:review][:flight_id]
+  end
+
+
+
+  # The controller for deleting a review. The user should have been prompted
+  # to make sure that they really wanted to delete the review.
+  def destroy
+    @review_to_destroy = Review.find(params[:id])
+    @review_to_destroy.destroy
+    flash[:success] = "Review Deleted"
+    redirect_to controller: "flights", action: "show", id: params[:flight_id]
   end
 
 
