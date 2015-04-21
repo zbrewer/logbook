@@ -1,0 +1,42 @@
+<%# View for the form where users can edit a review %>
+
+<h1>Edit Review</h1>
+
+<% if @review_to_edit.nil? %>
+
+  <%# Message to display if the passed review id doesn't exist %>
+
+  <h2>Review doesn't exist</h2>
+
+<% else %>
+
+  <%# Form and info to display if review is found %>
+
+  <h4>Editing review during flight in <%= @review_to_edit.flight.airplane.identification %> on <%= @review_to_edit.review_date.strftime("%m/%d/%Y") %></h4>
+
+  <%= form_for @review_to_edit, url: {action: "update"} do |f| %>
+
+    <div class="field">
+      <%= f.label :name_of_reviewer, "Reviewer Name" %><br />
+      <%= f.text_field :name_of_reviewer %>
+    </div>
+
+    <div class="field">
+      <%= f.label :flight_review, "BFR" %>
+      <%= f.check_box :flight_review %>
+
+      <%= f.label :instrument_proficiency_check, "IPC"%>
+      <%= f.check_box :instrument_proficiency_check %>
+
+      <%= f.label :cfi_renewal, "CFI Renewal" %>
+      <%= f.check_box :cfi_renewal %>
+    </div>
+
+    <br />
+
+    <div class="actions">
+      <%= f.submit "Update review" %>
+    </div>
+
+  <% end %>
+<% end %>

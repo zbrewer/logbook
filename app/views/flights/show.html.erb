@@ -140,6 +140,7 @@
       </ul>
     </div>
     <br />
+    <%= link_to "Edit Review", edit_review_path(@current_flight.review) %> <br />
     <%= link_to "Delete Review", { controller: :reviews, action: :destroy, id: @current_flight.review.id,
                                    flight_id: @current_flight.id }, method: :delete,
                                    data: { confirm: "Are you sure?" } %>

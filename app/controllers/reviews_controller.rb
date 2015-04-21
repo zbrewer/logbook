@@ -46,14 +46,30 @@ class ReviewsController < ApplicationController
 
 
 
-  # Controller for editing a review. Populates the fields with the current
-  # values and updates the values based on the new data the user submits.
+  # Controller for editing a review. This controller shows the edit form and populates
+  # the fields with the current values.
+  def edit
+    begin
+      @review_to_edit = Review.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      @review_to_edit = nil
+    end
+  end
+
+
+
+  # Controller that actually updates a review. Takes the new values for the type of review
+  # and the name of the reviewer from the form and updates them in the database.
   def update
     begin
       @review_to_update = Review.find(params[:id])
+      @review_to_update.update(review_update_params)
+      # TODO - Display success message
     rescue ActiveRecord::RecordNotFound
-      @review_to_update = nil
+      # TODO - Display an error message
     end
+
+    redirect_to controller: "flights", action: "show", id: @review_to_update.flight.id
   end
 
 
@@ -67,6 +83,15 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:review_date, :name_of_reviewer, :flight_review,
                                    :instrument_proficiency_check, :cfi_renewal, :flight_id)
+  end
+
+
+
+  # Helper function that sets the parameters allowed for editing a
+  # review (strong parameters)
+  def review_update_params
+    params.require(:review).permit(:name_of_reviewer, :flight_review, :instrument_proficiency_check,
+                                   :cfi_renewal)
   end
 
 end
