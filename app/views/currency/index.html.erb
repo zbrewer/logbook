@@ -1,0 +1,31 @@
+<%# Display all currency information %>
+<%# TODO - make all of this color coded based on whether or not it is expired %>
+
+<h1>Currency Information</h1>
+
+<h2>Medical Currency</h2>
+
+<%# Check to see if the current user has medicals listed %>
+<% if @current_medical.nil? %>
+
+  <%# Couldn't find any medicals for the current user %>
+  <strong>No medical found</strong>
+
+<% else %>
+
+  <%# Found medicals for the current user %>
+
+  <div>
+    <%= @current_medical.exam_date.strftime("Exam date: %m/%d/%Y") %>
+
+    <%# Display the privileges and expiration dates of medicals %>
+    <% if @current_medical.original_privileges? %>
+      <p>Privileges of class <%= @medical_class %> medical valid through <%= @current_medical.end_date(@medical_class).strftime("%m/%d/%Y") %>
+    <% elsif @current_medical.valid_for_flight? %>
+      <p>Privileges of class 3 medical valid through <%= @current_medical.end_date(3).strftime("%m/%d/%Y") %>
+    <% else %>
+      <p>Medical expired</p>
+    <% end %>
+  </div>
+
+<% end %>

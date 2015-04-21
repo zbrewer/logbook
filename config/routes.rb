@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'currency/index'
+
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }

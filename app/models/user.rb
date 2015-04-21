@@ -28,4 +28,12 @@ class User < ActiveRecord::Base
   # TODO - Test this association more (do checkrides under different
   # flights under different airplanes all show up?)
   has_many :checkrides, through: :flights
+
+
+
+  # Method that gets the user's most recent medical
+  def current_medical
+    self.medicals.order(:exam_date).reverse[0]
+  end
+
 end

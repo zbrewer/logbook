@@ -31,6 +31,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not user.reviews[0].cfi_renewal
     assert_equal "Harry Potter", user.reviews[0].name_of_reviewer
     assert user.checkrides.empty?
+    assert_equal 21, user.current_medical.age_at_exam
   end
 
   test "jane doe" do
@@ -57,6 +58,7 @@ class UserTest < ActiveSupport::TestCase
     assert user.reviews.empty?
     assert_not user.checkrides.empty?
     assert_equal "John Oliver", user.checkrides[0].examiner_name
+    assert_equal 21, user.current_medical.age_at_exam
   end
 
 end

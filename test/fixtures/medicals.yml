@@ -7,7 +7,7 @@ first_class:
   user: john_doe
 
 third_class:
-  exam_date: 2013-02-21
+  exam_date: 2013-10-03
   medical_class: 3
   examiner_name: "Thomas Jefferson"
   user: jane_doe
