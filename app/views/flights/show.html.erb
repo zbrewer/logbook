@@ -141,9 +141,8 @@
     </div>
     <br />
     <%= link_to "Edit Review", edit_review_path(@current_flight.review) %> <br />
-    <%= link_to "Delete Review", { controller: :reviews, action: :destroy, id: @current_flight.review.id,
-                                   flight_id: @current_flight.id }, method: :delete,
-                                   data: { confirm: "Are you sure?" } %>
+    <%= link_to "Delete Review", { controller: :reviews, action: :destroy, id: @current_flight.review.id},
+                                   method: :delete, data: { confirm: "Are you sure?" } %>
 
   <% else %>
 
@@ -187,6 +186,11 @@
         <% end %>
       </ul>
     </div>
+    <br />
+    <%= link_to "Edit Checkride", edit_checkride_path(@current_flight.checkride) %> <br />
+    <%= link_to "Delete Checkride", { controller: :checkrides, action: :destroy,
+                                      id: @current_flight.checkride.id}, method: :delete,
+                                      data: { confirm: "Are you sure?" } %>
 
   <% else %>
 

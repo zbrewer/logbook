@@ -35,13 +35,19 @@ class ReviewsController < ApplicationController
   def destroy
     begin
       @review_to_destroy = Review.find(params[:id])
+      @flight_id_for_redirect = @review_to_destroy.flight.id
       @review_to_destroy.destroy
       # TODO - Display a success message
     rescue ActiveRecord::RecordNotFound
       # TODO - Display an error message
+      @flight_id_for_redirect = -1
     end
 
-    redirect_to controller: "flights", action: "show", id: params[:flight_id]
+    if @flight_id_for_redirect == -1
+      redirect_to controller: "flights", action: "list"
+    else
+      redirect_to controller: "flights", action: "show", id: @flight_id_for_redirect
+    end
   end
 
 
