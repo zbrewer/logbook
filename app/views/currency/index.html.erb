@@ -3,6 +3,10 @@
 
 <h1>Currency Information</h1>
 
+
+
+
+
 <h2>Medical Currency</h2>
 
 <%# Check to see if the current user has medicals listed %>
@@ -29,3 +33,28 @@
   </div>
 
 <% end %>
+
+
+
+
+
+<h2>Landing Currency</h2>
+
+<%# Display information about day and night passenger currency %>
+<%# TODO - add tailwheel currency %>
+
+<div>
+  <% if current_user.day_current? %>
+    <p>Day current through <%= current_user.last_day_current_date.strftime("%m/%d/%Y") %>
+  <% else %>
+    <p>Not day current</p>
+  <% end %>
+
+  <br />
+
+  <% if current_user.night_current? %>
+    <p>Night current through <%= current_user.last_night_current_date.strftime("%m/%d/%Y") %>
+  <% else %>
+    <p>Not night current</p>
+  <% end %>
+</div>

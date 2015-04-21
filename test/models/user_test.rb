@@ -32,6 +32,10 @@ class UserTest < ActiveSupport::TestCase
     assert_equal "Harry Potter", user.reviews[0].name_of_reviewer
     assert user.checkrides.empty?
     assert_equal 21, user.current_medical.age_at_exam
+    assert_equal Date.new(2014, 6, 10), user.oldest_day_currency_flight
+    assert_equal Date.new(2014, 6, 10), user.oldest_night_currency_flight
+    assert_equal Date.new(2014, 9, 8), user.last_day_current_date
+    assert_equal Date.new(2014, 9, 8), user.last_night_current_date
   end
 
   test "jane doe" do
@@ -59,6 +63,10 @@ class UserTest < ActiveSupport::TestCase
     assert_not user.checkrides.empty?
     assert_equal "John Oliver", user.checkrides[0].examiner_name
     assert_equal 21, user.current_medical.age_at_exam
+    assert_equal nil, user.oldest_day_currency_flight
+    assert_equal nil, user.oldest_night_currency_flight
+    assert_equal nil, user.last_day_current_date
+    assert_equal nil, user.last_night_current_date
   end
 
 end
