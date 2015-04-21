@@ -33,9 +33,27 @@ class ReviewsController < ApplicationController
   # The controller for deleting a review. The user should have been prompted
   # to make sure that they really wanted to delete the review.
   def destroy
-    @review_to_destroy = Review.find(params[:id])
-    @review_to_destroy.destroy
+    begin
+      @review_to_destroy = Review.find(params[:id])
+      @review_to_destroy.destroy
+      # TODO - Display a success message
+    rescue ActiveRecord::RecordNotFound
+      # TODO - Display an error message
+    end
+
     redirect_to controller: "flights", action: "show", id: params[:flight_id]
+  end
+
+
+
+  # Controller for editing a review. Populates the fields with the current
+  # values and updates the values based on the new data the user submits.
+  def update
+    begin
+      @review_to_update = Review.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      @review_to_update = nil
+    end
   end
 
 
