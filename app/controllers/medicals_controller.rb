@@ -36,6 +36,50 @@ class MedicalsController < ApplicationController
 
 
 
+  # The controller for deleting a medical. The user should have been prompted
+  # to make sure that they really wanted to delete the medical.
+  def destroy
+    begin
+      @medical_to_destroy = Medical.find(params[:id])
+      @medical_to_destroy.destroy
+      # TODO - Display a success message
+    rescue ActiveRecord::RecordNotFound
+      # TODO - Display an error message
+    end
+
+    redirect_to controller: "medicals", action: "index"
+  end
+
+
+
+  # Controller for editing a medical. This controller shows the edit form and populates
+  # the fields with the current values.
+  def edit
+    begin
+      @medical_to_edit = Medical.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      @medical_to_edit = nil
+    end
+  end
+
+
+
+  # Controller that actually updates a medical. Takes the new values from the form and
+  # updates them in the database.
+  def update
+    begin
+      @medical_to_update = Medical.find(params[:id])
+      @medical_to_update.update(medical_params)
+      # TODO - Display success message
+    rescue ActiveRecord::RecordNotFound
+      # TODO - Display an error message
+    end
+
+    redirect_to controller: "medicals", action: "index"
+  end
+
+
+
 
 
   private

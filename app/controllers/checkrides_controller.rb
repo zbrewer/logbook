@@ -44,7 +44,7 @@ class CheckridesController < ApplicationController
     end
 
     if @flight_id_for_redirect == -1
-      redirect_to controller: "flights", action: "list"
+      redirect_to controller: "flights", action: "index"
     else
       redirect_to controller: "flights", action: "show", id: @flight_id_for_redirect
     end

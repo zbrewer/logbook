@@ -9,6 +9,8 @@
       <th>Class</th>
       <th>Exam Date</th>
       <th>Examiner</th>
+      <th></th>
+      <th></th>
     </tr>
 
     <%# Display this information for each medical in the list %>
@@ -17,6 +19,9 @@
         <td><%= medical.medical_class %></td>
         <td><%= medical.exam_date.strftime("%m/%d/%Y") %></td>
         <td><%= medical.examiner_name %></td>
+        <td><%= link_to "Edit", edit_medical_path(medical) %></td>
+        <td><%= link_to "Delete", { controller: :medicals, action: :destroy, id: medical.id },
+                        method: :delete, data: { confirm: "Are you sure?" } %></td>
       </tr>
     <% end %>
   </table>

@@ -1,0 +1,41 @@
+<%# View for the form where users can edit a medical %>
+
+<h1>Edit Medical</h1>
+
+<% if not @medical_to_edit == nil %>
+
+  <%# Found the medical to edit %>
+
+  <%= form_for @medical_to_edit, url: {action: "update"} do |f| %>
+
+    <div class="field">
+      <%= f.label :medical_class %><br />
+      <%= f.select :medical_class, [ ['First Class', 1], ['Second Class', 2], ['Third Class', 3] ] %>
+    </div>
+
+    <div class="field">
+      <%= f.label :exam_date %><br />
+      <%= f.date_select :exam_date, order: [ :month, :day, :year ], start_year: 1915,
+        end_year: Date.today.year, date_separator: '/ ' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :examiner_name %><br />
+      <%= f.text_field :examiner_name %>
+    </div>
+
+    <br />
+
+    <div class="actions">
+      <%= f.submit "Update Medical" %>
+    </div>
+
+  <% end %>
+
+<% else %>
+
+  <%# Couldn't find the medical %>
+
+  <strong>Medical not found</strong>
+
+<% end %>
