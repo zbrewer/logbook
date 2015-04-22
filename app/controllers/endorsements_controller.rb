@@ -38,6 +38,50 @@ class EndorsementsController < ApplicationController
 
 
 
+  # The controller for deleting an endorsement. The user should have been prompted
+  # to make sure that they really wanted to delete the endorsement.
+  def destroy
+    begin
+      @endorsement_to_destroy = Endorsement.find(params[:id])
+      @endorsement_to_destroy.destroy
+      # TODO - Display a success message
+    rescue ActiveRecord::RecordNotFound
+      # TODO - Display an error message
+    end
+
+    redirect_to controller: "endorsements", action: "index"
+  end
+
+
+
+  # Controller for editing an endorsement. This controller shows the edit form and populates
+  # the fields with the current values.
+  def edit
+    begin
+      @endorsement_to_edit = Endorsement.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      @endorsement_to_edit = nil
+    end
+  end
+
+
+
+  # Controller that actually updates an endorsement. Takes the new values from the form and
+  # updates them in the database.
+  def update
+    begin
+      @medical_to_update = Endorsement.find(params[:id])
+      @medical_to_update.update(endorsement_params)
+      # TODO - Display success message
+    rescue ActiveRecord::RecordNotFound
+      # TODO - Display an error message
+    end
+
+    redirect_to controller: "endorsements", action: "index"
+  end
+
+
+
 
 
   private

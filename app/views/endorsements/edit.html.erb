@@ -1,0 +1,61 @@
+<%# View for the form where users can edit an endorsement%>
+
+<h1>Edit Endorsement</h1>
+
+<% if not @endorsement_to_edit == nil %>
+
+  <%# Found the endorsement to edit %>
+
+  <%= form_for @endorsement_to_edit, url: {action: "update"} do |f| %>
+
+    <div class="field">
+      <%= f.label :endorsement_date %><br />
+      <%= f.date_select :endorsement_date, order: [ :month, :day, :year ], start_year: 1915,
+        end_year: Date.today.year, sate_separator: '/ ' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :cfi_name, "CFI Name" %><br />
+      <%= f.text_field :cfi_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :cfi_certificate_number, "CFI Certificate Number" %><br />
+      <%= f.number_field :cfi_certificate_number %>
+    </div>
+
+    <div class="field">
+      <%= f.label :cfi_expiration_date, "CFI Expiration Date" %><br />
+      <%= f.date_select :cfi_expiration_date, order: [ :month, :day, :year ], start_year: 1915,
+        end_year: Date.today.year + 5, sate_separator: '/ ' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :complex %>
+      <%= f.check_box :complex %>
+
+      <%= f.label :high_performance %>
+      <%= f.check_box :high_performance %>
+
+      <%= f.label :tailwheel %>
+      <%= f.check_box :tailwheel %>
+
+      <%= f.label :high_altitude %>
+      <%= f.check_box :high_altitude %>
+    </div>
+
+    <br />
+
+    <div class="actions">
+      <%= f.submit "Update endorsement" %>
+    </div>
+
+  <% end %>
+
+<% else %>
+
+  <%# Couldn't find the endorsement %>
+
+  <strong>Endorsement not found</strong>
+
+<% end %>

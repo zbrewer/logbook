@@ -11,6 +11,8 @@
       <th>CFI Certificate Number</th>
       <th>CFI Expiration Date</th>
       <th>Endorsement Type</th>
+      <th></th>
+      <th></th>
     </tr>
 
     <%# Display information for each endorsement %>
@@ -27,6 +29,9 @@
             <% end %>
           <% end %>
         </td>
+        <td><%= link_to "Edit", edit_endorsement_path(endorsement) %></td>
+        <td><%= link_to "Delete", { controller: :endorsements, action: :destroy, id: endorsement.id },
+                        method: :delete, data: { confirm: "Are you sure?" } %></td>
       </tr>
     <%end %>
   </table>
