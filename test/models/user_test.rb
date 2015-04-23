@@ -70,7 +70,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal nil, user.last_day_current_date
     assert_equal nil, user.last_night_current_date
     assert_equal nil, user.last_instrument_current_date
-    assert_equal Date.new(2017, 2, 28), user.last_pic_date
+    assert_equal nil, user.last_pic_date
   end
 
 end
