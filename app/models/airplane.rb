@@ -3,7 +3,5 @@ class Airplane < ActiveRecord::Base
   # user is deleted
   belongs_to :user, inverse_of: :airplanes
 
-  # TODO - make sure that flights are deleted when the corresponding
-  # airplane is deleted
-  has_many :flights, inverse_of: :airplane
+  has_many :flights, inverse_of: :airplane, dependent: :destroy
 end

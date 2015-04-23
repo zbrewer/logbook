@@ -1,0 +1,90 @@
+<%# View for the form where users can edit an airplane %>
+
+<h1>Edit Airplane</h1>
+
+<%# Check to see whether the airplane exists %>
+
+<% if @airplane_to_edit != nil %>
+
+  <%# Airplane found - display form %>
+
+  <%= form_for @airplane_to_edit, url: {action: "update"} do |f| %>
+
+    <div class="field">
+      <%= f.label :identification %><br />
+      <%= f.text_field :identification %>
+    </div>
+
+    <div class="field">
+      <%= f.label :airplane_type %><br />
+      <%= f.text_field :airplane_type %>
+    </div>
+
+    <div class="field">
+      <%= f.label :display_name %><br />
+      <%= f.text_field :display_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :complex %>
+      <%= f.check_box :complex %>
+
+      <%= f.label :high_performance %>
+      <%= f.check_box :high_performance %>
+
+      <%= f.label :tailwheel %>
+      <%= f.check_box :tailwheel %>
+
+      <%= f.label :high_altitude %>
+      <%= f.check_box :high_altitude %>
+
+      <%= f.label :turbine %>
+      <%= f.check_box :turbine %>
+
+      <br />
+
+      <%= f.label :glider %>
+      <%= f.check_box :glider %>
+
+      <%= f.label :rotorcraft %>
+      <%= f.check_box :rotorcraft %>
+
+      <%= f.label :powered_lift %>
+      <%= f.check_box :powered_lift %>
+
+      <%= f.label :lighter_than_air %>
+      <%= f.check_box :lighter_than_air %>
+
+      <%= f.label :single_engine_land %>
+      <%= f.check_box :single_engine_land %>
+
+      <br />
+
+      <%= f.label :single_engine_sea %>
+      <%= f.check_box :single_engine_sea %>
+
+      <%= f.label :multi_engine_land %>
+      <%= f.check_box :multi_engine_land %>
+
+      <%= f.label :multi_engine_sea %>
+      <%= f.check_box :multi_engine_sea %>
+
+      <%= f.label :simulator %>
+      <%= f.check_box :simulator %>
+    </div>
+
+    <br />
+
+    <div class="actions">
+      <%= f.submit "Update airplane" %>
+    </div>
+
+  <% end %>
+
+<% else %>
+
+  <%# Airplane not found %>
+
+  <strong>Airplane not found</strong>
+
+<% end %>

@@ -59,6 +59,50 @@ class AirplanesController < ApplicationController
 
 
 
+  # The controller for deleting an airplane. The user should have been prompted
+  # to make sure that they really wanted to delete the airplane.
+  def destroy
+    begin
+      @airplane_to_destroy = Airplane.find(params[:id])
+      @airplane_to_destroy.destroy
+      # TODO - Display a success message
+    rescue ActiveRecord::RecordNotFound
+      # TODO - Display an error message
+    end
+
+    redirect_to controller: "airplanes", action: "index"
+  end
+
+
+
+  # Controller for editing an airplane. This controller shows the edit form and populates
+  # the fields with the current values.
+  def edit
+    begin
+      @airplane_to_edit = Airplane.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      @airplane_to_edit = nil
+    end
+  end
+
+
+
+  # Controller that actually updates an airplane. Takes the new values from the form and
+  # updates them in the database.
+  def update
+    begin
+      @airplane_to_update = Airplane.find(params[:id])
+      @airplane_to_update.update(airplane_params)
+      # TODO - Display success message
+    rescue ActiveRecord::RecordNotFound
+      # TODO - Display an error message
+    end
+
+    redirect_to controller: "airplanes", action: "show", id: @airplane_to_update.id
+  end
+
+
+
 
 
   private
