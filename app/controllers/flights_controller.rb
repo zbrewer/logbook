@@ -82,6 +82,63 @@ class FlightsController < ApplicationController
 
 
 
+  # The controller for deleting a flight. The user should have been prompted
+  # to make sure that they really wanted to delete the flight.
+  def destroy
+    begin
+      @flight_to_destroy = Flight.find(params[:id])
+      @flight_to_destroy.destroy
+      # TODO - Display a success message
+    rescue ActiveRecord::RecordNotFound
+      # TODO - Display an error message
+    end
+
+    redirect_to controller: "flights", action: "index"
+  end
+
+
+
+  # Controller for editing a flight. This controller shows the edit form and populates
+  # the fields with the current values.
+  def edit
+    @airplane_list = current_user.airplanes
+
+    begin
+      @flight_to_edit = Flight.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      @flight_to_edit = nil
+    end
+  end
+
+
+
+  # Controller that actually updates a flight. Takes the new values from the form and
+  # updates them in the database.
+  def update
+    begin
+      @flight_to_update = Flight.find(params[:id])
+      @flight_to_update.update(flight_params)
+
+      if not @flight_to_update.review.nil?
+        @flight_to_update.review.review_date = @flight_to_update.flight_date
+        @flight_to_update.review.save
+      end
+
+      if not @flight_to_update.checkride.nil?
+        @flight_to_update.checkride.checkride_date = @flight_to_update.flight_date
+        @flight_to_update.checkride.save
+      end
+
+      # TODO - Display success message
+    rescue ActiveRecord::RecordNotFound
+      # TODO - Display an error message
+    end
+
+    redirect_to controller: "flights", action: "show", id: @flight_to_update.id
+  end
+
+
+
 
 
   private

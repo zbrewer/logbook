@@ -202,4 +202,11 @@
 
   <% end %>
 
+  <br />
+  <br />
+
+  <%= link_to "Edit Flight", edit_flight_path(@current_flight) %><br />
+  <%= link_to "Delete Flight", { controller: :flights, action: :destroy, id: @current_flight.id },
+               method: :delete, data: { confirm: "Are you sure?" } %>
+
 <% end %>
