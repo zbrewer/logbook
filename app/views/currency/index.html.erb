@@ -24,9 +24,9 @@
 
     <%# Display the privileges and expiration dates of medicals %>
     <% if @current_medical.original_privileges? %>
-      <p>Privileges of class <%= @medical_class %> medical valid through <%= @current_medical.end_date(@medical_class).strftime("%m/%d/%Y") %>
+      <p>Privileges of class <%= @medical_class %> medical valid through <%= @current_medical.end_date(@medical_class).strftime("%m/%d/%Y") %></p>
     <% elsif @current_medical.valid_for_flight? %>
-      <p>Privileges of class 3 medical valid through <%= @current_medical.end_date(3).strftime("%m/%d/%Y") %>
+      <p>Privileges of class 3 medical valid through <%= @current_medical.end_date(3).strftime("%m/%d/%Y") %></p>
     <% else %>
       <p>Medical expired</p>
     <% end %>
@@ -45,7 +45,7 @@
 
 <div>
   <% if current_user.day_current? %>
-    <p>Day current through <%= current_user.last_day_current_date.strftime("%m/%d/%Y") %>
+    <p>Day current through <%= current_user.last_day_current_date.strftime("%m/%d/%Y") %></p>
   <% else %>
     <p>Not day current</p>
   <% end %>
@@ -53,8 +53,23 @@
   <br />
 
   <% if current_user.night_current? %>
-    <p>Night current through <%= current_user.last_night_current_date.strftime("%m/%d/%Y") %>
+    <p>Night current through <%= current_user.last_night_current_date.strftime("%m/%d/%Y") %></p>
   <% else %>
     <p>Not night current</p>
+  <% end %>
+</div>
+
+
+
+<h2>Instrument Currency</h2>
+
+<%# Display information about instrument currency %>
+<%# TODO - don't display this section if the user isn't instrument rated? %>
+
+<div>
+  <% if current_user.instrument_current? %>
+    <p>Instrument current through <%= current_user.last_instrument_current_date.strftime("%m/%d/%Y") %></p>
+  <% else %>
+    <p>Not instrument current</p>
   <% end %>
 </div>
