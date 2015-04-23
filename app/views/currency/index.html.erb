@@ -36,6 +36,18 @@
 
 
 
+<h2>PIC Currency</h2>
+
+<%# Check to see if the current user is eligible to act as PIC or if they need a flight review %>
+
+<div>
+  <% if current_user.pic_current? %>
+    <p>Next flight review needed on or before <%= current_user.last_pic_date.strftime("%m/%d/%Y") %></p>
+  <% else %>
+    <p>Not PIC current. You need a flight review, a new rating, or a new certificate!</p>
+  <% end %>
+</div>
+
 
 
 <h2>Landing Currency</h2>

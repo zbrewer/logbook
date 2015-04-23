@@ -175,4 +175,47 @@ class User < ActiveRecord::Base
     end
   end
 
+
+
+  # Returns the date of the last flight review or equivelent
+  def date_of_last_flight_review
+    flight_list = self.flights.order(:flight_date).reverse
+
+    for flight in flight_list do
+      if (flight.review != nil and flight.review.flight_review) or flight.checkride != nil
+        return flight.flight_date
+      end
+    end
+
+    return nil
+  end
+
+
+
+  # Returns the date of the last day on which a user can act as PIC (fly without a new flight review)
+  # TODO - Return nil if pilot is a student?
+  def last_pic_date
+    last_flight_review = self.date_of_last_flight_review
+
+    if last_flight_review == nil
+      return nil
+    else
+      return DateHelpers.calendar_months_from(last_flight_review, 24)
+    end
+  end
+
+
+
+  # Returns whether or not the user is current to act as PIC (flight review)
+  # TODO - Return false if the user is a student?
+  def pic_current?
+    last_current_date = self.last_pic_date
+
+    if last_current_date == nil
+      return nil
+    else
+      return last_current_date >= Date.today
+    end
+  end
+
 end
