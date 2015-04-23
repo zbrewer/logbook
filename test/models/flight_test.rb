@@ -17,7 +17,7 @@ class FlightTest < ActiveSupport::TestCase
     assert_equal 3, flight.night_landings
     assert_in_delta 0.4, flight.actual_instrument, 0.0000000001
     assert_in_delta 0.6, flight.simulated_instrument, 0.0000000001
-    assert_equal 3, flight.number_approaches
+    assert_equal 6, flight.number_approaches
     assert_equal 1, flight.number_holds
     assert_equal "Local IFR training flight", flight.remarks
     assert_equal "KCMI", flight.departure_airport

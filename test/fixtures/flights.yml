@@ -11,7 +11,7 @@ instrument_training:
   night_landings: 3
   actual_instrument: 0.4
   simulated_instrument: 0.6
-  number_approaches: 3
+  number_approaches: 6
   number_holds: 1
   remarks: "Local IFR training flight"
   departure_airport: "KCMI"
