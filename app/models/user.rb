@@ -98,19 +98,17 @@ class User < ActiveRecord::Base
 
 
   # Returns true if the pilot is day current and false otherwise
-  # TODO - change this to check for student pilots?
   def day_current?
     last_day = User.last_landing_current_date(self.oldest_day_currency_flight)
-    last_day != nil && last_day >= Date.today
+    last_day != nil && last_day >= Date.today && self.certificate_type != "STU"
   end
 
 
 
   # Returns true if the pilot is night current and false otherwise
-  # TODO - change this to check for student and other pilot types?
   def night_current?
     last_day = User.last_landing_current_date(self.oldest_night_currency_flight)
-    last_day != nil && last_day >= Date.today
+    last_day != nil && last_day >= Date.today && self.certificate_type != "STU" && self.certificate_type != "SPT" && self.certificate_type != "RPL"
   end
 
 
@@ -193,11 +191,10 @@ class User < ActiveRecord::Base
 
 
   # Returns the date of the last day on which a user can act as PIC (fly without a new flight review)
-  # TODO - Return nil if pilot is a student?
   def last_pic_date
     last_flight_review = self.date_of_last_flight_review
 
-    if last_flight_review == nil
+    if last_flight_review == nil or self.certificate_type == "STU"
       return nil
     else
       return DateHelpers.calendar_months_from(last_flight_review, 24)
@@ -207,7 +204,6 @@ class User < ActiveRecord::Base
 
 
   # Returns whether or not the user is current to act as PIC (flight review)
-  # TODO - Return false if the user is a student?
   def pic_current?
     last_current_date = self.last_pic_date
 
