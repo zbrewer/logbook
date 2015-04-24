@@ -127,6 +127,21 @@ class User < ActiveRecord::Base
 
 
 
+  # Returns true if the user is instrument rated and false otherwise
+  def instrument_rated?
+    flight_list = self.flights.order(:flight_date).reverse
+
+    for flight in flight_list do
+      if flight.checkride != nil and flight.checkride.instrument
+        return true
+      end
+    end
+
+    return false
+  end
+
+
+
   # Returns the date of the oldest flight for instrument currency
   def oldest_instrument_currency_flight
     flight_list = self.flights.order(:flight_date).reverse

@@ -38,6 +38,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal Date.new(2014, 9, 8), user.last_night_current_date
     assert_equal Date.new(2014, 12, 31), user.last_instrument_current_date
     assert_equal Date.new(2016, 6, 30), user.last_pic_date
+    assert_not user.instrument_rated?
   end
 
   test "jane doe" do
@@ -71,6 +72,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal nil, user.last_night_current_date
     assert_equal nil, user.last_instrument_current_date
     assert_equal nil, user.last_pic_date
+    assert_not user.instrument_rated?
   end
 
 end

@@ -5,8 +5,6 @@
 
 
 
-
-
 <h2>Medical Currency</h2>
 
 <%# Check to see if the current user has medicals listed %>
@@ -38,6 +36,7 @@
 
 <%# Only display PIC currency information if the user is not a student pilot %>
 <% if current_user.certificate_type != "STU" %>
+
   <h2>PIC Currency</h2>
 
   <%# Check to see if the current user is eligible to act as PIC or if they need a flight review %>
@@ -49,12 +48,14 @@
       <p>Not PIC current. You need a flight review, a new rating, or a new certificate!</p>
     <% end %>
   </div>
+
 <% end %>
 
 
 
 <%# Only display passenger currency information if user is able to carry passengers %>
 <% if current_user.certificate_type != "STU" %> 
+
   <h2>Passenger Currency</h2>
 
   <%# Display information about day and night passenger currency %>
@@ -76,21 +77,26 @@
       <% else %>
         <p>Not night current</p>
       <% end %>
-  <% end %>
+    <% end %>
   </div>
+
 <% end %>
 
 
 
-<h2>Instrument Currency</h2>
+<%# Only display instrument currency information if the user is instrument rated %>
+<% if current_user.instrument_rated? %>
 
-<%# Display information about instrument currency %>
-<%# TODO - don't display this section if the user isn't instrument rated? %>
+  <h2>Instrument Currency</h2>
 
-<div>
-  <% if current_user.instrument_current? %>
-    <p>Instrument current through <%= current_user.last_instrument_current_date.strftime("%m/%d/%Y") %></p>
-  <% else %>
-    <p>Not instrument current</p>
-  <% end %>
-</div>
+  <%# Display information about instrument currency %>
+
+  <div>
+    <% if current_user.instrument_current? %>
+      <p>Instrument current through <%= current_user.last_instrument_current_date.strftime("%m/%d/%Y") %></p>
+    <% else %>
+      <p>Not instrument current</p>
+    <% end %>
+  </div>
+
+<% end %>
