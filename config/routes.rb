@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'statistics/index'
+
   get 'currency/index'
 
   devise_for :users, controllers: {

@@ -229,4 +229,40 @@ class User < ActiveRecord::Base
     end
   end
 
+
+
+  # Returns the longest flight (total time) or nil if there are no flights
+  def longest_flight
+    flight_list = self.flights.order(:total_time).reverse
+    flight_list[0]
+  end
+
+
+
+  # Gets the total number of day landings
+  def total_day_landings
+    flight_list = self.flights
+    total_landings = 0
+
+    for flight in flight_list do
+      total_landings += flight.day_landings
+    end
+
+    return total_landings
+  end
+
+
+
+  # Gets the total number of night landings
+  def total_night_landings
+    flight_list = self.flights
+    total_landings = 0
+
+    for flight in flight_list do
+      total_landings += flight.night_landings
+    end
+
+    return total_landings
+  end
+
 end

@@ -1,0 +1,51 @@
+<%# View for displaying all statistics information %>
+
+<h1>Statistics</h1>
+
+
+
+<%# Display the longest flight as long as there is a longest flight %>
+
+<% if current_user.longest_flight != nil %>
+
+  <h2>Longest flight (time)</h2>
+
+  <p>Longest flight was <%= current_user.longest_flight.total_time %> hours on 
+  <%= current_user.longest_flight.flight_date.strftime("%m/%d/%Y") %>. Full details 
+  <%= link_to "here", controller: "flights", action: "show", id: current_user.longest_flight.id %>.</p>
+
+<% end %>
+
+
+
+<%# Display the total number of day and night landings %>
+
+<h2>Total Landings</h2>
+
+<h3>Day Landings</h3>
+<%= current_user.total_day_landings %>
+<h3>Night Landings</h3>
+<%= current_user.total_night_landings %>
+
+
+
+<%# Display statistics by specific plane %>
+
+<h2>Statistics by Plane</h2>
+<table>
+  <tr>
+    <th>Identification</th>
+    <th>Total Flights</th>
+    <th>Total Time</th>
+    <th>Total Landings</th>
+  </tr>
+
+  <% for airplane in current_user.airplanes %>
+    <tr>
+      <td><%= airplane.identification %></td>
+      <td><%= airplane.number_of_flights%></td>
+      <td><%= '%.1f' % airplane.total_time %></td>
+      <td><%= airplane.total_landings %></td>
+    </tr>
+  <% end %>
+</table>
