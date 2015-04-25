@@ -265,4 +265,37 @@ class User < ActiveRecord::Base
     return total_landings
   end
 
+
+
+  # Gets the total flight time by type and returns it as a hash with the type
+  # as the key and the flight time as the value.
+  def total_time_by_type
+    flight_list = self.flights
+    time_by_type_hash = Hash.new(0)
+
+    for flight in flight_list do
+      current_type = flight.airplane.airplane_type
+      time_by_type_hash[current_type] += flight.total_time
+    end
+
+    return time_by_type_hash
+  end
+
+
+
+  # Gets the total number of landings by type and returns it as a hash with the type
+  # as the key and the number of landings as the value.
+  def total_landings_by_type
+    flight_list = self.flights
+    landings_by_type_hash = Hash.new(0)
+
+    for flight in flight_list do
+      current_type = flight.airplane.airplane_type
+      landings_by_type_hash[current_type] += flight.day_landings
+      landings_by_type_hash[current_type] += flight.night_landings
+    end
+
+    return landings_by_type_hash
+  end
+
 end

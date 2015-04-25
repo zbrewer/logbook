@@ -29,7 +29,6 @@ class Airplane < ActiveRecord::Base
 
     for flight in flight_list do
       time += flight.total_time
-      time += flight.total_time
     end
 
     return time

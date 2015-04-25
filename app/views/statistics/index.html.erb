@@ -49,3 +49,24 @@
     </tr>
   <% end %>
 </table>
+
+
+
+<%# Display statistics by type of plane %>
+
+<h2>Statistics by Type</h2>
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Total Time</th>
+    <th>Total Landings</th>
+  </tr>
+
+  <% current_user.total_time_by_type.each_pair do |airplane_type, time_in_type| %>
+    <tr>
+      <td><%= airplane_type %></td>
+      <td><%= '%.1f' % time_in_type %></td>
+      <td><%= '%d' % current_user.total_landings_by_type[airplane_type] %></td>
+    </tr>
+  <% end %>
+</table>
