@@ -70,3 +70,24 @@
     </tr>
   <% end %>
 </table>
+
+
+
+<%# Display statistics by airport %>
+
+<h2>Statistics by Airport</h2>
+<table>
+  <tr>
+    <th>Airport</th>
+    <th>Number of Flights</th>
+    <th>Number of Landings</th>
+  </tr>
+
+  <% current_user.total_flights_by_airport.each_pair do |airport, number_of_flights| %>
+    <tr>
+      <td><%= airport %></td>
+      <td><%= '%d' % number_of_flights %></td>
+      <td><%= '%d' % current_user.total_landings_by_airport[airport] %></td>
+    </tr>
+  <% end %>
+</table>

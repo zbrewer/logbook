@@ -298,4 +298,49 @@ class User < ActiveRecord::Base
     return landings_by_type_hash
   end
 
+
+
+  # Gets the total number of flights by airport and returns it as a hash with the airport
+  # as the key and the number of flights as the value.
+  def total_flights_by_airport
+    flight_list = self.flights
+    flights_by_airport_hash = Hash.new(0)
+
+    for flight in flight_list do
+      for airport in flight.get_airports do
+        flights_by_airport_hash[airport] += 1
+      end
+    end
+
+    return flights_by_airport_hash
+  end
+
+
+
+  # Gets the total number of landings by airport and returns it as a hash with the airport
+  # as the key and the number of landings as the value.
+  # TODO - come up with a better way to figure this out?
+  def total_landings_by_airport
+    flight_list = self.flights
+    landings_by_airport_hash = Hash.new(0)
+
+    for flight in flight_list do
+
+      number_landings = flight.day_landings + flight.night_landings
+
+      # If there are more landings than destination airports (there should be) add a landing to each airport
+      if number_landings >= flight.get_destination_airports.size
+        for airport in flight.get_destination_airports do
+          landings_by_airport_hash[airport] += 1
+          number_landings -= 1
+        end
+      end
+
+      # Add any remaining landings to the final airport
+      landings_by_airport_hash[flight.get_destination_airports[flight.get_destination_airports.size - 1]] += number_landings
+    end
+
+    return landings_by_airport_hash
+  end
+
 end
