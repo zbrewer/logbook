@@ -22,28 +22,26 @@
 
     <%# Navbar displayed on each page %>
     <div class="navbar">
-      <% if user_signed_in? %>
+      <%= nav_bar fixed: :top, brand: "Logbook", responsive: true do %>
 
-        <%# Display this information in the navbar if there is a user signed in %>
-        <p>
-        Logged in as: <%= current_user.first_name %> <%= current_user.last_name %>(<%= current_user.certificate_type %>) | 
-        <%= current_user.email %> | 
-        Certificate Number: <%= current_user.certificate_number %> <%= current_user.certificate_issue_date.strftime("Issued on %m/%d/%Y") %> | 
-        <%= current_user.birth_date.strftime("Born %m/%d/%Y") %> | 
-        <%= link_to 'Edit Profile', edit_user_registration_path, :class => 'navbar-link' %> | 
-        <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => 'navbar-link' %> | 
-        <%= link_to 'Home', controller: '/home', action: 'index' %>
-        </p>
+        <%# The stuff on the right side of the navbar %>
+        <%= menu_group pull: :right do %>
 
-      <% else %>
+          <% if user_signed_in? %>
+            <%# Navbar buttons on the right to display if the user is signed in %>
+            <%= menu_text 'Logged in as ' + current_user.first_name + ' ' + current_user.last_name %>
+            <%= menu_item 'Edit Profile', edit_user_registration_path %>
+            <%= menu_item 'Logout', destroy_user_session_path, :method => :delete %>
 
-        <%# Display this information in the navbar if there is no user signed in %>
-        <p>
-        <%= link_to 'Sign Up', new_user_registration_path, :class => 'navbar-link' %> | 
-        <%= link_to 'Login', new_user_session_path, :class => 'navbar-link' %>
-        </p>
+          <% else %>
+            <%# Navbar buttons to display on the right when there is no user signed in %>
+            <%= menu_item 'Sign Up', new_user_registration_path %>
+            <%= menu_item 'Login', new_user_session_path %>
+          <% end %>
 
+        <% end %>
       <% end %>
+
     </div>
 
 
