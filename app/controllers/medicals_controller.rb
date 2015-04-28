@@ -31,7 +31,7 @@ class MedicalsController < ApplicationController
   # Gets a list of medicals (sorted by exam date) that is
   # accessible in the view.
   def index
-    @medical_list = current_user.medicals.order(:exam_date)
+    @medical_list = current_user.medicals.order(:exam_date).reverse
   end
 
 

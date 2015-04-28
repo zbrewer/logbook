@@ -3,26 +3,26 @@
 <h1>All airplanes</h1>
 
 <div>
-  <table>
+  <table class="table">
     <%# Column labels %>
     <tr>
-      <th>Display Name</th>
-      <th>Identification</th>
+      <th>Name</th>
+      <th>Ident</th>
       <th>Type</th>
-      <th>Complex</th>
-      <th>High Performance</th>
-      <th>Tailwheel</th>
-      <th>High Altitude</th>
-      <th>Turbine</th>
-      <th>Glider</th>
-      <th>Rotorcraft</th>
-      <th>Powered Lift</th>
-      <th>Lighter Than Air</th>
-      <th>Single Engine Land</th>
-      <th>Single Engine Sea</th>
-      <th>Multi-Engine Land</th>
-      <th>Multi-Engine Sea</th>
-      <th>Simulator</th>
+      <th>CMP</th>
+      <th>HP</th>
+      <th>TW</th>
+      <th>HA</th>
+      <th>TURB</th>
+      <th>GLI</th>
+      <th>ROT</th>
+      <th>PL</th>
+      <th>LTA</th>
+      <th>SEL</th>
+      <th>SES</th>
+      <th>MEL</th>
+      <th>MES</th>
+      <th>Sim</th>
     </tr>
 
     <%# Dsiplay this for each airplane in the list %>
@@ -50,4 +50,8 @@
     <% end %>
 
   </table>
+
+  <br />
+
+  <%= link_to "Add Airplane", new_airplane_path, class: "btn btn-default" %>
 </div>

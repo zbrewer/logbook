@@ -3,11 +3,11 @@
 <h1>Medical List</h1>
 
 <div>
-  <table>
+  <table class="table">
     <%# Column labels %>
     <tr>
-      <th>Class</th>
       <th>Exam Date</th>
+      <th>Class</th>
       <th>Examiner</th>
       <th></th>
       <th></th>
@@ -16,8 +16,8 @@
     <%# Display this information for each medical in the list %>
     <% for medical in @medical_list %>
       <tr>
-        <td><%= medical.medical_class %></td>
         <td><%= medical.exam_date.strftime("%m/%d/%Y") %></td>
+        <td><%= medical.medical_class %></td>
         <td><%= medical.examiner_name %></td>
         <td><%= link_to "Edit", edit_medical_path(medical) %></td>
         <td><%= link_to "Delete", { controller: :medicals, action: :destroy, id: medical.id },
@@ -25,4 +25,8 @@
       </tr>
     <% end %>
   </table>
+
+  <br />
+
+  <%= link_to "Add Medical", new_medical_path, class:  "btn btn-default" %>
 </div>

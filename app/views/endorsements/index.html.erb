@@ -3,7 +3,7 @@
 <h1>Endorsements</h1>
 
 <div>
-  <table>
+  <table class="table">
     <%# Column labels %>
     <tr>
       <th>Endorsement Date</th>
@@ -35,4 +35,8 @@
       </tr>
     <%end %>
   </table>
+
+  <br />
+
+  <%= link_to "Add Endorsement", new_endorsement_path, class: "btn btn-default" %>
 </div>

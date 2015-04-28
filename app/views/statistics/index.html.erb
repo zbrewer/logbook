@@ -10,7 +10,7 @@
 
   <h2>Longest flight (time)</h2>
 
-  <p>Longest flight was <%= current_user.longest_flight.total_time %> hours on 
+  <p>Longest flight was <%= '%.1f' % current_user.longest_flight.total_time %> hours on 
   <%= current_user.longest_flight.flight_date.strftime("%m/%d/%Y") %>. Full details 
   <%= link_to "here", controller: "flights", action: "show", id: current_user.longest_flight.id %>.</p>
 
@@ -32,7 +32,7 @@
 <%# Display statistics by specific plane %>
 
 <h2>Statistics by Plane</h2>
-<table>
+<table class="table">
   <tr>
     <th>Identification</th>
     <th>Total Flights</th>
@@ -55,7 +55,7 @@
 <%# Display statistics by type of plane %>
 
 <h2>Statistics by Type</h2>
-<table>
+<table class="table">
   <tr>
     <th>Type</th>
     <th>Total Time</th>
@@ -76,7 +76,7 @@
 <%# Display statistics by airport %>
 
 <h2>Statistics by Airport</h2>
-<table>
+<table class="table">
   <tr>
     <th>Airport</th>
     <th>Number of Flights</th>

@@ -3,10 +3,10 @@
 <h1>Flights</h1>
 
 <div>
-  <table>
+  <table class="table table-striped">
     <%# Column labels %>
     <tr>
-      <th>Airplane Identification</th>
+      <th>Airplane Ident</th>
       <th>Date</th>
       <th>From</th>
       <th>To</th>
@@ -38,4 +38,8 @@
     <% end %>
 
   </table>
+
+  <br />
+
+  <%= link_to "Add Flight", new_flight_path, class: "btn btn-default" %>
 </div>

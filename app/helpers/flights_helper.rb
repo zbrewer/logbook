@@ -6,10 +6,10 @@ module FlightsHelper
   # appended. This ensures that the remarks displayed with this
   # function are always 50 characters long or less.
   def display_remarks(remarks)
-    if remarks.length <= 50
+    if remarks.length <= 25
       remarks
     else
-      remarks[0..46] + "..."
+      remarks[0..21] + "..."
     end
   end
 end
