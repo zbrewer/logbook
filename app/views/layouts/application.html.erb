@@ -20,45 +20,57 @@
 
   <body>
 
-    <%# Navbar displayed on each page %>
-    <div class="navbar">
-      <%= nav_bar fixed: :top, brand: "Logbook", responsive: true do %>
+    <div class="container">
 
-        <%# The stuff on the right side of the navbar %>
-        <%= menu_group pull: :right do %>
+      <%# Navbar displayed on each page %>
+      <div class="navbar">
+        <%= nav_bar fixed: :top, brand: "Logbook", responsive: true do %>
 
-          <% if user_signed_in? %>
-            <%# Navbar buttons on the right to display if the user is signed in %>
-            <%= menu_text 'Logged in as ' + current_user.first_name + ' ' + current_user.last_name %>
-            <%= menu_item 'Edit Profile', edit_user_registration_path %>
-            <%= menu_item 'Logout', destroy_user_session_path, :method => :delete %>
+          <%# The stuff on the right side of the navbar %>
+          <%= menu_group pull: :right do %>
 
-          <% else %>
-            <%# Navbar buttons to display on the right when there is no user signed in %>
-            <%= menu_item 'Sign Up', new_user_registration_path %>
-            <%= menu_item 'Login', new_user_session_path %>
+            <% if user_signed_in? %>
+              <%# Navbar buttons on the right to display if the user is signed in %>
+              <%= menu_text 'Logged in as ' + current_user.first_name + ' ' + current_user.last_name %>
+              <%= menu_item 'Edit Profile', edit_user_registration_path %>
+              <%= menu_item 'Logout', destroy_user_session_path, :method => :delete %>
+
+            <% else %>
+              <%# Navbar buttons to display on the right when there is no user signed in %>
+              <%= menu_item 'Sign Up', new_user_registration_path %>
+              <%= menu_item 'Login', new_user_session_path %>
+            <% end %>
+
           <% end %>
-
         <% end %>
+
+      </div>
+
+
+
+
+
+      <%# Notifications for the devise framework %>
+      <% if notice %>
+        <div class="alert alert-info">
+          <p><%= notice %></p>
+        </div>
       <% end %>
 
+      <% if alert %>
+        <div class="alert alert-warning">
+          <p><%= alert %></p>
+        </div>
+      <% end %>
+
+
+
+
+
+      <%# Display the views here %>
+      <%= yield %>
+
     </div>
-
-
-
-    <%# Notifications for the devise framework %>
-    <% if notice %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-
-    <% if alert %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
-
-
-
-    <%# Display the views here %>
-    <%= yield %>
 
   </body>
 
