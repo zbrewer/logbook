@@ -10,70 +10,146 @@
 
   <%= form_for @airplane_to_edit, url: {action: "update"} do |f| %>
 
-    <div class="field">
-      <%= f.label :identification %><br />
-      <%= f.text_field :identification %>
+    <div class="row">
+
+      <div class="col-md-4">
+        <%= f.label :identification %>
+        <%= f.text_field :identification %>
+      </div>
+
+      <div class="col-md-4">
+        <%= f.label :airplane_type %>
+        <%= f.text_field :airplane_type %>
+      </div>
+
+      <div class="col-md-4">
+        <%= f.label :display_name %>
+        <%= f.text_field :display_name %>
+      </div>
+
     </div>
 
-    <div class="field">
-      <%= f.label :airplane_type %><br />
-      <%= f.text_field :airplane_type %>
-    </div>
 
-    <div class="field">
-      <%= f.label :display_name %><br />
-      <%= f.text_field :display_name %>
-    </div>
 
-    <div class="field">
-      <%= f.label :complex %>
-      <%= f.check_box :complex %>
 
-      <%= f.label :high_performance %>
-      <%= f.check_box :high_performance %>
-
-      <%= f.label :tailwheel %>
-      <%= f.check_box :tailwheel %>
-
-      <%= f.label :high_altitude %>
-      <%= f.check_box :high_altitude %>
-
-      <%= f.label :turbine %>
-      <%= f.check_box :turbine %>
-
-      <br />
-
-      <%= f.label :glider %>
-      <%= f.check_box :glider %>
-
-      <%= f.label :rotorcraft %>
-      <%= f.check_box :rotorcraft %>
-
-      <%= f.label :powered_lift %>
-      <%= f.check_box :powered_lift %>
-
-      <%= f.label :lighter_than_air %>
-      <%= f.check_box :lighter_than_air %>
-
-      <%= f.label :single_engine_land %>
-      <%= f.check_box :single_engine_land %>
-
-      <br />
-
-      <%= f.label :single_engine_sea %>
-      <%= f.check_box :single_engine_sea %>
-
-      <%= f.label :multi_engine_land %>
-      <%= f.check_box :multi_engine_land %>
-
-      <%= f.label :multi_engine_sea %>
-      <%= f.check_box :multi_engine_sea %>
-
-      <%= f.label :simulator %>
-      <%= f.check_box :simulator %>
-    </div>
 
     <br />
+
+
+
+
+
+    <div class="row">
+
+      <div class="col-md-2">
+        <%= f.label :complex %><br />
+        <%= f.check_box :complex %>
+      </div>
+
+      <div class="col-md-2">
+        <%= f.label :high_performance %><br />
+        <%= f.check_box :high_performance %>
+      </div>
+
+      <div class="col-md-2">
+        <%= f.label :tailwheel %><br />
+        <%= f.check_box :tailwheel %>
+      </div>
+
+      <div class="col-md-2">
+        <%= f.label :high_altitude %><br />
+        <%= f.check_box :high_altitude %>
+      </div>
+
+      <div class="col-md-2">
+        <%= f.label :turbine %><br />
+        <%= f.check_box :turbine %>
+      </div>
+
+    </div>
+
+
+
+
+
+    <br />
+
+
+
+
+
+    <div class="row">
+
+      <div class="col-md-2">
+        <%= f.label :glider %><br />
+        <%= f.check_box :glider %>
+      </div>
+
+      <div class="col-md-2">
+        <%= f.label :rotorcraft %><br />
+        <%= f.check_box :rotorcraft %>
+      </div>
+
+      <div class="col-md-2">
+        <%= f.label :powered_lift %><br />
+        <%= f.check_box :powered_lift %>
+      </div>
+
+      <div class="col-md-2">
+        <%= f.label :lighter_than_air %><br />
+        <%= f.check_box :lighter_than_air %>
+      </div>
+
+      <div class="col-md-2">
+        <%= f.label :single_engine_land %><br />
+        <%= f.check_box :single_engine_land %>
+      </div>
+
+    </div>
+
+
+
+
+
+    <br />
+
+
+
+
+
+    <div class="row">
+
+      <div class="col-md-2">
+        <%= f.label :single_engine_sea %><br />
+        <%= f.check_box :single_engine_sea %>
+      </div>
+
+      <div class="col-md-2">
+        <%= f.label :multi_engine_land %><br />
+        <%= f.check_box :multi_engine_land %>
+      </div>
+
+      <div class="col-md-2">
+        <%= f.label :multi_engine_sea %><br />
+        <%= f.check_box :multi_engine_sea %>
+      </div>
+
+      <div class="col-md-2">
+        <%= f.label :simulator %><br />
+        <%= f.check_box :simulator %>
+      </div>
+
+    </div>
+
+
+
+
+
+    <br />
+
+
+
+
 
     <div class="actions">
       <%= f.submit "Update airplane" %>

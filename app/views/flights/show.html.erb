@@ -122,7 +122,7 @@
     <%# Flight was a review %>
 
     <br />
-    <strong>Review:</strong>
+    <h3>Review:</h3>
 
     <div>
       <strong>Reviewer Name:</strong>
@@ -140,17 +140,16 @@
       </ul>
     </div>
     <br />
-    <%= link_to "Edit Review", edit_review_path(@current_flight.review) %> <br />
+    <%= link_to "Edit Review", edit_review_path(@current_flight.review), class: "btn btn-primary" %>
     <%= link_to "Delete Review", { controller: :reviews, action: :destroy, id: @current_flight.review.id},
-                                   method: :delete, data: { confirm: "Are you sure?" } %>
+                                   method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
 
   <% else %>
 
     <%# Flight wasn't a review %>
 
     <br />
-    <strong>Review:</strong>
-    <%= link_to "Add Review", :controller => "reviews", :action => "new", :flight_id => @current_flight.id %>
+    <%= link_to "Add Review \u00BB", new_review_path(:flight_id => @current_flight.id), class: "btn btn-primary" %>
 
   <% end %>
 
@@ -166,7 +165,7 @@
     <%# Flight was a checkride %>
 
     <br />
-    <strong>Checkride:</strong>
+    <h3>Checkride:</h3>
 
     <div>
       <strong>Examiner:</strong>
@@ -174,7 +173,7 @@
     </div>
 
     <div>
-      <strong>Checkride Type:</strong>
+      <strong>Checkride Type(s):</strong>
       <% if @current_flight.checkride.certificate %>
         <%= @current_flight.checkride.certificate_type %>
       <% end %>
@@ -187,26 +186,26 @@
       </ul>
     </div>
     <br />
-    <%= link_to "Edit Checkride", edit_checkride_path(@current_flight.checkride) %> <br />
+    <%= link_to "Edit Checkride", edit_checkride_path(@current_flight.checkride), class: "btn btn-primary" %>
     <%= link_to "Delete Checkride", { controller: :checkrides, action: :destroy,
                                       id: @current_flight.checkride.id}, method: :delete,
-                                      data: { confirm: "Are you sure?" } %>
+                                      data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
 
   <% else %>
 
     <%# Flight wasn't a checkride %>
 
     <br />
-    <strong>Checkride:</strong>
-    <%= link_to "Add Checkride", :controller => "checkrides", :action => "new", :flight_id => @current_flight.id %>
+    <%= link_to "Add Checkride \u00BB", new_checkride_path(:flight_id => @current_flight.id), class: "btn btn-primary" %>
 
   <% end %>
 
   <br />
   <br />
+  <br />
 
-  <%= link_to "Edit Flight", edit_flight_path(@current_flight) %><br />
+  <%= link_to "Edit Flight", edit_flight_path(@current_flight), class: "btn btn-primary" %>
   <%= link_to "Delete Flight", { controller: :flights, action: :destroy, id: @current_flight.id },
-               method: :delete, data: { confirm: "Are you sure?" } %>
+               method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
 
 <% end %>

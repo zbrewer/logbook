@@ -1,93 +1,143 @@
 <%# View for displaying all statistics information %>
 
-<h1>Statistics</h1>
+<div class="row">
+
+  <div class="col-md-12">
+    <h1 class="text-center">Statistics</h1>
+  </div>
+
+</div>
 
 
 
-<%# Display the longest flight as long as there is a longest flight %>
-
-<% if current_user.longest_flight != nil %>
-
-  <h2>Longest flight (time)</h2>
-
-  <p>Longest flight was <%= '%.1f' % current_user.longest_flight.total_time %> hours on 
-  <%= current_user.longest_flight.flight_date.strftime("%m/%d/%Y") %>. Full details 
-  <%= link_to "here", controller: "flights", action: "show", id: current_user.longest_flight.id %>.</p>
-
-<% end %>
 
 
+<div class="row">
 
-<%# Display the total number of day and night landings %>
+  <%# Display the longest flight as long as there is a longest flight %>
 
-<h2>Total Landings</h2>
+  <div class="col-md-6 text-center">
 
-<h3>Day Landings</h3>
-<%= current_user.total_day_landings %>
-<h3>Night Landings</h3>
-<%= current_user.total_night_landings %>
+    <% if current_user.longest_flight != nil %>
 
+      <h3>Longest flight (time)</h3>
 
+      <p>Longest flight was <%= '%.1f' % current_user.longest_flight.total_time %> hours on 
+      <%= current_user.longest_flight.flight_date.strftime("%m/%d/%Y") %>. Full details 
+      <%= link_to "here", controller: "flights", action: "show", id: current_user.longest_flight.id %>.</p>
 
-<%# Display statistics by specific plane %>
+    <% else %>
 
-<h2>Statistics by Plane</h2>
-<table class="table">
-  <tr>
-    <th>Identification</th>
-    <th>Total Flights</th>
-    <th>Total Time</th>
-    <th>Total Landings</th>
-  </tr>
+      <p>No flights found</p>
 
-  <% for airplane in current_user.airplanes %>
-    <tr>
-      <td><%= airplane.identification %></td>
-      <td><%= airplane.number_of_flights%></td>
-      <td><%= '%.1f' % airplane.total_time %></td>
-      <td><%= airplane.total_landings %></td>
-    </tr>
-  <% end %>
-</table>
+    <% end %>
+
+  </div>
 
 
 
-<%# Display statistics by type of plane %>
 
-<h2>Statistics by Type</h2>
-<table class="table">
-  <tr>
-    <th>Type</th>
-    <th>Total Time</th>
-    <th>Total Landings</th>
-  </tr>
 
-  <% current_user.total_time_by_type.each_pair do |airplane_type, time_in_type| %>
-    <tr>
-      <td><%= airplane_type %></td>
-      <td><%= '%.1f' % time_in_type %></td>
-      <td><%= '%d' % current_user.total_landings_by_type[airplane_type] %></td>
-    </tr>
-  <% end %>
-</table>
+  <%# Display the total number of day and night landings %>
+
+  <div class="col-md-6 text-center">
+
+    <h3>Total Landings</h3>
+
+    <P>Day Landings: <%= current_user.total_day_landings %></p>
+    <p>Night Landings: <%= current_user.total_night_landings %></p>
+
+  </div>
+
+</div>
 
 
 
-<%# Display statistics by airport %>
 
-<h2>Statistics by Airport</h2>
-<table class="table">
-  <tr>
-    <th>Airport</th>
-    <th>Number of Flights</th>
-    <th>Number of Landings</th>
-  </tr>
 
-  <% current_user.total_flights_by_airport.each_pair do |airport, number_of_flights| %>
-    <tr>
-      <td><%= airport %></td>
-      <td><%= '%d' % number_of_flights %></td>
-      <td><%= '%d' % current_user.total_landings_by_airport[airport] %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="row">
+
+  <%# Display statistics by specific plane %>
+
+  <div class="col-md-6">
+
+    <h3 class="text-center">Statistics by Plane</h3>
+    <table class="table">
+      <tr>
+        <th>Identification</th>
+        <th>Total Flights</th>
+        <th>Total Time</th>
+        <th>Total Landings</th>
+      </tr>
+
+      <% for airplane in current_user.airplanes %>
+        <tr>
+          <td><%= link_to airplane.identification, airplane_path(airplane.id) %></td>
+          <td><%= airplane.number_of_flights%></td>
+          <td><%= '%.1f' % airplane.total_time %></td>
+          <td><%= airplane.total_landings %></td>
+        </tr>
+      <% end %>
+    </table>
+
+  </div>
+
+
+
+
+
+  <%# Display statistics by type of plane %>
+
+  <div class="col-md-6">
+
+    <h3 class="text-center">Statistics by Type</h3>
+    <table class="table">
+      <tr>
+        <th>Type</th>
+        <th>Total Time</th>
+        <th>Total Landings</th>
+      </tr>
+
+      <% current_user.total_time_by_type.each_pair do |airplane_type, time_in_type| %>
+        <tr>
+          <td><%= airplane_type %></td>
+          <td><%= '%.1f' % time_in_type %></td>
+          <td><%= '%d' % current_user.total_landings_by_type[airplane_type] %></td>
+        </tr>
+      <% end %>
+    </table>
+
+  </div>
+
+</div>
+
+
+
+
+
+<div class="row">
+
+  <%# Display statistics by airport %>
+
+  <div class="col-md-6">
+
+  <h3 class="text-center">Statistics by Airport</h3>
+    <table class="table">
+      <tr>
+        <th>Airport</th>
+        <th>Number of Flights</th>
+        <th>Number of Landings</th>
+      </tr>
+
+      <% current_user.total_flights_by_airport.sort_by{ |key, value| value }.reverse.to_h.each_pair do |airport, number_of_flights| %>
+        <tr>
+          <td><%= airport %></td>
+          <td><%= '%d' % number_of_flights %></td>
+          <td><%= '%d' % current_user.total_landings_by_airport[airport] %></td>
+        </tr>
+      <% end %>
+    </table>
+
+  </div>
+
+</div>

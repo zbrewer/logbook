@@ -1,38 +1,75 @@
 <%# View for the home page %>
 
-<h1>Home Page</h1>
+<h1>Welcome to your Logbook!</h1>
 
 <% if user_signed_in? %>
 
   <%# Display this information if there is a user signed in %>
 
-  <h2>Medicals</h2>
-  <%= link_to "Add medical", controller: "medicals", action: "new" %><br />
-  <%= link_to "View medicals", controller: "medicals", action: "index" %>
+  <div class="row">
 
-  <h2>Airplanes</h2>
-  <%= link_to "Add airplane", controller: "airplanes", action: "new" %><br />
-  <%= link_to "View airplanes", controller: "airplanes", action: "index" %>
+    <div class="col-md-4">
+      <h2>Medicals</h2>
+      <%= link_to "Add medical \u00BB", new_medical_path, class: "btn btn-primary" %><br />
+      <br />
+      <%= link_to "View medicals \u00BB", medicals_path, class: "btn btn-primary" %>
+    </div>
 
-  <h2>Flights</h2>
-  <%= link_to "Add flight", controller: "flights", action: "new" %><br />
-  <%= link_to "View flights", controller: "flights", action: "index" %>
+    <div class="col-md-4">
+      <h2>Airplanes</h2>
+      <%= link_to "Add airplane \u00BB", new_airplane_path, class: "btn btn-primary" %><br />
+      <br />
+      <%= link_to "View airplanes \u00BB", airplanes_path, class: "btn btn-primary" %>
 
-  <h2>Endorsements</h2>
-  <%= link_to "Add endorsement", controller: "endorsements", action: "new" %><br />
-  <%= link_to "View endorsements", controller: "endorsements", action: "index" %>
+    </div>
 
-  <h2>Currency</h2>
-  <%= link_to "View currency information", controller: "currency", action: "index" %>
+    <div class="col-md-4">
+      <h2>Flights</h2>
+      <%= link_to "Add flight \u00BB", new_flight_path, class: "btn btn-primary" %><br />
+      <br />
+      <%= link_to "View flights \u00BB", flights_path, class: "btn btn-primary" %>
 
-  <h2>Statistics</h2>
-  <%= link_to "View statistics", controller: "statistics", action: "index" %>
+    </div>
+
+  </div>
+
+
+
+
+
+  <br />
+
+
+
+
+
+  <div class="row">
+
+    <div class="col-md-4">
+      <h2>Endorsements</h2>
+      <%= link_to "Add endorsement \u00BB", new_endorsement_path, class: "btn btn-primary" %><br />
+      <br />
+      <%= link_to "View endorsement \u00BB", endorsements_path, class: "btn btn-primary" %>
+    </div>
+
+    <div class="col-md-4">
+      <h2>Currency</h2>
+      <%= link_to "View currency \u00BB", currency_index_path, class: "btn btn-primary" %>
+
+    </div>
+
+    <div class="col-md-4">
+      <h2>Statistics</h2>
+      <%= link_to "View statistics \u00BB", statistics_index_path, class: "btn btn-primary" %>
+
+    </div>
+
+  </div>
 
 <% else %>
 
   <%# Display this information if there is no user signed in %>
 
-  <h2>Welcome!</h2>
   <p>Please make an account or sign in if you already have one.</p>
 
 <% end %>

@@ -47,8 +47,8 @@
 
   <br />
 
-  <%= link_to "Edit Airplane", edit_airplane_path(@current_airplane) %><br />
+  <%= link_to "Edit Airplane", edit_airplane_path(@current_airplane), class: "btn btn-primary" %>
   <%= link_to "Delete Airplane", { controller: :airplanes, action: :destroy, id: @current_airplane.id },
-              method: :delete, data: { confirm: "Are you sure?" } %>
+              method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
 
 <% end %>

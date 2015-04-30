@@ -1,102 +1,140 @@
 <%# Display all currency information %>
 <%# TODO - make all of this color coded based on whether or not it is expired %>
 
-<h1>Currency Information</h1>
+<div class="row">
 
+  <div class="col-md-12">
 
+    <h1 class="text-center">Currency Information</h1>
 
-<h2>Medical Currency</h2>
-
-<%# Check to see if the current user has medicals listed %>
-<% if @current_medical.nil? %>
-
-  <%# Couldn't find any medicals for the current user %>
-  <strong>No medical found</strong>
-
-<% else %>
-
-  <%# Found medicals for the current user %>
-
-  <div>
-    <%= @current_medical.exam_date.strftime("Exam date: %m/%d/%Y") %>
-
-    <%# Display the privileges and expiration dates of medicals %>
-    <% if @current_medical.original_privileges? %>
-      <p>Privileges of class <%= @medical_class %> medical valid through <%= @current_medical.end_date(@medical_class).strftime("%m/%d/%Y") %></p>
-    <% elsif @current_medical.valid_for_flight? %>
-      <p>Privileges of class 3 medical valid through <%= @current_medical.end_date(3).strftime("%m/%d/%Y") %></p>
-    <% else %>
-      <p>Medical expired</p>
-    <% end %>
   </div>
 
-<% end %>
+</div>
 
 
 
-<%# Only display PIC currency information if the user is not a student pilot %>
-<% if current_user.certificate_type != "STU" %>
 
-  <h2>PIC Currency</h2>
 
-  <%# Check to see if the current user is eligible to act as PIC or if they need a flight review %>
+<div class="row">
 
-  <div>
-    <% if current_user.pic_current? %>
-      <p>Next flight review needed on or before <%= current_user.last_pic_date.strftime("%m/%d/%Y") %></p>
+  <div class="col-md-6 text-center">
+
+  <h3>Medical Currency</h3>
+
+    <%# Check to see if the current user has medicals listed %>
+    <% if @current_medical.nil? %>
+
+      <%# Couldn't find any medicals for the current user %>
+      <p>No medical found</p>
+
     <% else %>
-      <p>Not PIC current. You need a flight review, a new rating, or a new certificate!</p>
+
+      <%# Found medicals for the current user %>
+
+      <div>
+        <%= @current_medical.exam_date.strftime("Exam date: %m/%d/%Y") %>
+
+        <%# Display the privileges and expiration dates of medicals %>
+        <% if @current_medical.original_privileges? %>
+          <p>Privileges of class <%= @medical_class %> medical valid through <%= @current_medical.end_date(@medical_class).strftime("%m/%d/%Y") %></p>
+        <% elsif @current_medical.valid_for_flight? %>
+          <p>Privileges of class 3 medical valid through <%= @current_medical.end_date(3).strftime("%m/%d/%Y") %></p>
+        <% else %>
+          <p>Medical expired</p>
+        <% end %>
+      </div>
+
     <% end %>
+
   </div>
 
-<% end %>
 
 
 
-<%# Only display passenger currency information if user is able to carry passengers %>
-<% if current_user.certificate_type != "STU" %> 
 
-  <h2>Passenger Currency</h2>
+  <div class="col-md-6 text-center">
 
-  <%# Display information about day and night passenger currency %>
-  <%# TODO - add tailwheel currency %>
+    <%# Only display PIC currency information if the user is not a student pilot %>
+    <% if current_user.certificate_type != "STU" %>
 
-  <div>
-    <% if current_user.day_current? %>
-      <p>Day current through <%= current_user.last_day_current_date.strftime("%m/%d/%Y") %></p>
-    <% else %>
-      <p>Not day current</p>
+      <h3>PIC Currency</h3>
+
+      <%# Check to see if the current user is eligible to act as PIC or if they need a flight review %>
+
+      <div>
+        <% if current_user.pic_current? %>
+          <p>Next flight review needed on or before <%= current_user.last_pic_date.strftime("%m/%d/%Y") %></p>
+        <% else %>
+          <p>Not PIC current. You need a flight review, a new rating, or a new certificate!</p>
+        <% end %>
+      </div>
+
     <% end %>
 
-    <br />
-
-    <%# Make sure that the user isn't a sport pilot or recreational pilot %>
-    <% if current_user.certificate_type != "SPT" and current_user.certificate_type != "RPL" %>
-      <% if current_user.night_current? %>
-        <p>Night current through <%= current_user.last_night_current_date.strftime("%m/%d/%Y") %></p>
-      <% else %>
-        <p>Not night current</p>
-      <% end %>
-    <% end %>
   </div>
 
-<% end %>
+</div>
 
 
 
-<%# Only display instrument currency information if the user is instrument rated %>
-<% if current_user.instrument_rated? %>
 
-  <h2>Instrument Currency</h2>
 
-  <%# Display information about instrument currency %>
+<div class="row">
 
-  <div>
-    <% if current_user.instrument_current? %>
-      <p>Instrument current through <%= current_user.last_instrument_current_date.strftime("%m/%d/%Y") %></p>
-    <% else %>
-      <p>Not instrument current</p>
+  <div class="col-md-6 text-center">
+
+    <%# Only display passenger currency information if user is able to carry passengers %>
+    <% if current_user.certificate_type != "STU" %> 
+
+      <h3>Passenger Currency</h3>
+
+      <%# Display information about day and night passenger currency %>
+      <%# TODO - add tailwheel currency %>
+
+      <div>
+        <% if current_user.day_current? %>
+          <p>Day current through <%= current_user.last_day_current_date.strftime("%m/%d/%Y") %></p>
+        <% else %>
+          <p>Not day current</p>
+        <% end %>
+
+        <%# Make sure that the user isn't a sport pilot or recreational pilot %>
+        <% if current_user.certificate_type != "SPT" and current_user.certificate_type != "RPL" %>
+          <% if current_user.night_current? %>
+            <p>Night current through <%= current_user.last_night_current_date.strftime("%m/%d/%Y") %></p>
+          <% else %>
+            <p>Not night current</p>
+          <% end %>
+        <% end %>
+      </div>
+
     <% end %>
+
   </div>
 
-<% end %>
+
+
+
+
+  <div class="col-md-6 text-center">
+
+    <%# Only display instrument currency information if the user is instrument rated %>
+    <% if current_user.instrument_rated? %>
+
+      <h3>Instrument Currency</h3>
+
+      <%# Display information about instrument currency %>
+
+      <div>
+        <% if current_user.instrument_current? %>
+          <p>Instrument current through <%= current_user.last_instrument_current_date.strftime("%m/%d/%Y") %></p>
+        <% else %>
+          <p>Not instrument current</p>
+        <% end %>
+      </div>
+
+    <% end %>
+
+  </div>
+
+</div>
