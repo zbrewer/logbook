@@ -32,20 +32,20 @@
                 :id => airplane.id %></td>
         <td><%= airplane.identification %></td>
         <td><%= airplane.airplane_type %></td>
-        <td><%= airplane.complex %></td>
-        <td><%= airplane.high_performance %></td>
-        <td><%= airplane.tailwheel %></td>
-        <td><%= airplane.high_altitude %></td>
-        <td><%= airplane.turbine %></td>
-        <td><%= airplane.glider %></td>
-        <td><%= airplane.rotorcraft %></td>
-        <td><%= airplane.powered_lift %></td>
-        <td><%= airplane.lighter_than_air %></td>
-        <td><%= airplane.single_engine_land %></td>
-        <td><%= airplane.single_engine_sea %></td>
-        <td><%= airplane.multi_engine_land %></td>
-        <td><%= airplane.multi_engine_sea %></td>
-        <td><%= airplane.simulator %></td>
+        <td><%= display_boolean_icon(airplane.complex) %></td>
+        <td><%= display_boolean_icon(airplane.high_performance) %></td>
+        <td><%= display_boolean_icon(airplane.tailwheel) %></td>
+        <td><%= display_boolean_icon(airplane.high_altitude) %></td>
+        <td><%= display_boolean_icon(airplane.turbine) %></td>
+        <td><%= display_boolean_icon(airplane.glider) %></td>
+        <td><%= display_boolean_icon(airplane.rotorcraft) %></td>
+        <td><%= display_boolean_icon(airplane.powered_lift) %></td>
+        <td><%= display_boolean_icon(airplane.lighter_than_air) %></td>
+        <td><%= display_boolean_icon(airplane.single_engine_land) %></td>
+        <td><%= display_boolean_icon(airplane.single_engine_sea) %></td>
+        <td><%= display_boolean_icon(airplane.multi_engine_land) %></td>
+        <td><%= display_boolean_icon(airplane.multi_engine_sea) %></td>
+        <td><%= display_boolean_icon(airplane.simulator) %></td>
       </tr>
     <% end %>
 

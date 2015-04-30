@@ -1,29 +1,74 @@
 <%# View for the form where users can add a new medical %>
 
-<h1>Add a Medical</h1>
+<div class="row">
+  <div class="col-md-12">
+    <h1>Add a Medical</h1>
+  </div>
+</div>
 
-<%= form_for :medical, url: medicals_path do |f| %>
 
-  <div class="field">
-    <%= f.label :medical_class %><br />
-    <%= f.select :medical_class, [ ['First Class', 1], ['Second Class', 2], ['Third Class', 3] ] %>
+
+
+
+<br />
+
+
+
+
+
+<%= form_for :medical, url: medicals_path, :html => { class: "form-horizontal" } do |f| %>
+
+  <div class="form-group">
+
+    <%# TODO - Add form control to the classes for these %>
+    <div class="col-md-4">
+      <%= f.label :medical_class %>
+      <%= f.select :medical_class, [ ['First Class', 1], ['Second Class', 2], ['Third Class', 3] ], {}, { class: "" } %>
+    </div>
+
+
+
+    <div class="col-md-4">
+      <%= f.label :exam_date %>
+      <%= f.date_select :exam_date, {order: [ :month, :day, :year ], start_year: 1915,
+                                     end_year: Date.today.year, date_separator: '/ '}, { type: "date", class: "" } %>
+    </div>
+
   </div>
 
-  <div class="field">
-    <%= f.label :exam_date %><br />
-    <%= f.date_select :exam_date, order: [ :month, :day, :year ], start_year: 1915,
-      end_year: Date.today.year, date_separator: '/ ' %>
-  </div>
 
-  <div class="field">
-    <%= f.label :examiner_name %><br />
-    <%= f.text_field :examiner_name %>
-  </div>
+
+
 
   <br />
 
-  <div class="actions">
-    <%= f.submit "Add Medical" %>
+
+
+
+
+  <div class="form-group">
+    <div class="col-md-8">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-medkit fa-fw"></i></span>
+        <%= f.text_field :examiner_name, type: "text", class: "form-control", placeholder: "Examiner Name" %>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <br />
+
+
+
+
+
+  <div class="form-group">
+    <div>
+      <%= f.submit "Add Medical", type: "submit", class: "btn btn-default" %>
+    </div>
   </div>
 
 <% end %>

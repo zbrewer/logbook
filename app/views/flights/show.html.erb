@@ -204,8 +204,8 @@
   <br />
   <br />
 
-  <%= link_to "Edit Flight", edit_flight_path(@current_flight), class: "btn btn-primary" %>
-  <%= link_to "Delete Flight", { controller: :flights, action: :destroy, id: @current_flight.id },
+  <%= link_to raw('<i class="fa fa-pencil"></i> Edit Flight'), edit_flight_path(@current_flight), class: "btn btn-primary" %>
+  <%= link_to raw('<i class="fa fa-trash-o fa-lg"></i> Delete Flight'), { controller: :flights, action: :destroy, id: @current_flight.id },
                method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
 
 <% end %>
