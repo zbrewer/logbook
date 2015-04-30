@@ -22,6 +22,7 @@ class FlightsController < ApplicationController
 
     # TODO - Should this redirect to the page where the user was before adding
     # a flight?
+    flash[:notice] = "Flight Successfully Added"
     redirect_to action: "index"
   end
 
@@ -88,9 +89,9 @@ class FlightsController < ApplicationController
     begin
       @flight_to_destroy = Flight.find(params[:id])
       @flight_to_destroy.destroy
-      # TODO - Display a success message
+      flash[:notice] = "Flight Successfully Removed"
     rescue ActiveRecord::RecordNotFound
-      # TODO - Display an error message
+      flash[:error] = "Flight Not Found"
     end
 
     redirect_to controller: "flights", action: "index"
@@ -129,9 +130,9 @@ class FlightsController < ApplicationController
         @flight_to_update.checkride.save
       end
 
-      # TODO - Display success message
+      flash[:notice] = "Flight Successfully Updated"
     rescue ActiveRecord::RecordNotFound
-      # TODO - Display an error message
+      flash[:error] = "Flight Not Found"
     end
 
     redirect_to controller: "flights", action: "show", id: @flight_to_update.id

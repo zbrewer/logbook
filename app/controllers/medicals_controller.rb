@@ -22,6 +22,7 @@ class MedicalsController < ApplicationController
 
     # TODO - Should this redirect to the page where the user was
     # before adding the medical?
+    flash[:notice] = "Medical Successfully Added"
     redirect_to action: "index"
   end
 
@@ -42,9 +43,9 @@ class MedicalsController < ApplicationController
     begin
       @medical_to_destroy = Medical.find(params[:id])
       @medical_to_destroy.destroy
-      # TODO - Display a success message
+      flash[:notice] = "Medical Successfully Deleted"
     rescue ActiveRecord::RecordNotFound
-      # TODO - Display an error message
+      flash[:error] = "Medical Not Found"
     end
 
     redirect_to controller: "medicals", action: "index"
@@ -70,9 +71,9 @@ class MedicalsController < ApplicationController
     begin
       @medical_to_update = Medical.find(params[:id])
       @medical_to_update.update(medical_params)
-      # TODO - Display success message
+      flash[:notice] = "Medical Successfully Updated"
     rescue ActiveRecord::RecordNotFound
-      # TODO - Display an error message
+      flash[:error] = "Medical Not Found"
     end
 
     redirect_to controller: "medicals", action: "index"

@@ -21,6 +21,7 @@ class EndorsementsController < ApplicationController
 
     # TODO - Change this to redirect to the page where the user was before
     # adding an endorsement?
+    flash[:notice] = "Endorsement Successfully Added"
     redirect_to action: "index"
   end
 
@@ -44,9 +45,9 @@ class EndorsementsController < ApplicationController
     begin
       @endorsement_to_destroy = Endorsement.find(params[:id])
       @endorsement_to_destroy.destroy
-      # TODO - Display a success message
+      flash[:notice] = "Endorsement Successfully Removed"
     rescue ActiveRecord::RecordNotFound
-      # TODO - Display an error message
+      flash[:error] = "Endorsement Not Found"
     end
 
     redirect_to controller: "endorsements", action: "index"
@@ -72,9 +73,9 @@ class EndorsementsController < ApplicationController
     begin
       @medical_to_update = Endorsement.find(params[:id])
       @medical_to_update.update(endorsement_params)
-      # TODO - Display success message
+      flash[:notice] = "Endorsement Successfully Updated"
     rescue ActiveRecord::RecordNotFound
-      # TODO - Display an error message
+      flash[:error] = "Endorsement Not Found"
     end
 
     redirect_to controller: "endorsements", action: "index"

@@ -25,6 +25,7 @@ class ReviewsController < ApplicationController
 
     # TODO - Change this to redirect to the page where the user was before
     # adding a review?
+    flash[:notice] = "Review Successfully Added"
     redirect_to controller: "flights", action: "show", id: params[:review][:flight_id]
   end
 
@@ -37,9 +38,9 @@ class ReviewsController < ApplicationController
       @review_to_destroy = Review.find(params[:id])
       @flight_id_for_redirect = @review_to_destroy.flight.id
       @review_to_destroy.destroy
-      # TODO - Display a success message
+      flash[:notice] = "Review Successfully Removed"
     rescue ActiveRecord::RecordNotFound
-      # TODO - Display an error message
+      flash[:error] = "Review Not Found"
       @flight_id_for_redirect = -1
     end
 
@@ -70,9 +71,9 @@ class ReviewsController < ApplicationController
     begin
       @review_to_update = Review.find(params[:id])
       @review_to_update.update(review_update_params)
-      # TODO - Display success message
+      flash[:notice] = "Review Successfully Updated"
     rescue ActiveRecord::RecordNotFound
-      # TODO - Display an error message
+      flash[:error] = "Review Not Found"
     end
 
     redirect_to controller: "flights", action: "show", id: @review_to_update.flight.id

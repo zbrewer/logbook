@@ -25,6 +25,7 @@ class CheckridesController < ApplicationController
 
     # TODO - Change this to redirect to the page where the user was before
     # adding a checkride?
+    flash[:notice] = "Checkride Successfully Added"
     redirect_to controller: "flights", action: "show", id: params[:checkride][:flight_id]
   end
 
@@ -37,10 +38,10 @@ class CheckridesController < ApplicationController
       @checkride_to_destroy = Checkride.find(params[:id])
       @flight_id_for_redirect = @checkride_to_destroy.flight.id
       @checkride_to_destroy.destroy
-      # TODO - display a success message
+      flash[:notice] = "Checkride Successfully Removed"
     rescue ActiveRecord::RecordNotFound
       @flight_id_for_redirect = -1
-      # TODO - Display an error message
+      flash[:error] = "Checkride Not Found"
     end
 
     if @flight_id_for_redirect == -1
@@ -70,9 +71,9 @@ class CheckridesController < ApplicationController
     begin
       @checkride_to_update = Checkride.find(params[:id])
       @checkride_to_update.update(checkride_update_params)
-      # TODO - Display success message
+      flash[:notice] = "Checkride Successfully Updated"
     rescue ActiveRecord::RecordNotFound
-      # TODO - Display an error message
+      flash[:error] = "Checkride Not Found"
     end
 
     redirect_to controller: "flights", action: "show", id: @checkride_to_update.flight.id

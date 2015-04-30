@@ -22,6 +22,7 @@ class AirplanesController < ApplicationController
 
     # TODO - Change this to redirect to the page where the user was
     # before adding an airplane?
+    flash[:notice] = "Airplane Successfully Added"
     redirect_to action: "index"
   end
 
@@ -70,6 +71,7 @@ class AirplanesController < ApplicationController
       # TODO - Display an error message
     end
 
+    flash[:notice] = "Airplane Successfully Removed"
     redirect_to controller: "airplanes", action: "index"
   end
 
@@ -98,6 +100,7 @@ class AirplanesController < ApplicationController
       # TODO - Display an error message
     end
 
+    flash[:notice] = "Airplane Successfully Updated"
     redirect_to controller: "airplanes", action: "show", id: @airplane_to_update.id
   end
 
