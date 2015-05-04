@@ -50,6 +50,23 @@
 
 
 
+      <%# Navigation tabs %>
+      <div>
+        <ul class="nav nav-tabs">
+          <li role="presentation" class=<%= "active" if controller_name == "home" %>><%= link_to "Home", root_path %></li>
+          <li role="presentation" class=<%= "active" if controller_name == "medicals" %>><%= link_to "Medicals", medicals_path %></li>
+          <li role="presentation" class=<%= "active" if controller_name == "airplanes" %>><%= link_to "Airplanes", airplanes_path %></li>
+          <li role="presentation" class=<%= "active" if controller_name == "flights" %>><%= link_to "Flights", flights_path %></li>
+          <li role="presentation" class=<%= "active" if controller_name == "endorsements" %>><%= link_to "Endorsements", endorsements_path %></li>
+          <li role="presentation" class=<%= "active" if controller_name == "currency" %>><%= link_to "Currency", currency_index_path %></li>
+          <li role="presentation" class=<%= "active" if controller_name == "statistics" %>><%= link_to "Statistics", statistics_index_path %></li>
+        </ul>
+      </div>
+
+
+
+
+
       <%# Notifications %>
       <% if notice %>
         <div class="alert alert-info">
