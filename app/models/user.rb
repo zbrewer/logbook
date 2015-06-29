@@ -196,7 +196,11 @@ class User < ActiveRecord::Base
 
     for flight in flight_list do
       if (flight.review != nil and flight.review.flight_review) or flight.checkride != nil
-        return flight.flight_date
+        if self.certificate_issue_date != nil and self.certificate_issue_date > flight.flight_date
+          return self.certificate_issue_date
+        else
+          return flight.flight_date
+        end
       end
     end
 
